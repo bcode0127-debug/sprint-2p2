@@ -10,14 +10,29 @@ from pathlib import Path
 
 URL = "https://openrouter.ai/api/v1/chat/completions"
 MODEL = "anthropic/claude-haiku-5.5"
-MAX_TOKENS = 150
-REASONING = {"enabled": False}
-PROMPT_PATH = Path(__file__).resolve().parent.parent.parent / "prompts" / "monitor_prompt_v0.txt"
+PROMPT_DIR = Path(__file__).resolve().parent.parent.parent / "prompts"
 _FENCE = re.compile(r"```(?:json)?", re.IGNORECASE)
 _OBJECT = re.compile(r"\{.*\}", re.DOTALL)
 _PROB = re.compile(r"\"?probability\"?\s*[:=]\s*(-?\d+(?:\.\d+)?)", re.IGNORECASE)
 
 Post = Callable[[dict], dict]
+
+
+@dataclass(frozen=True)
+class Config:
+    """Prompt template and request settings for one monitor variant."""
+
+    template: str
+    reasoning: dict
+    max_tokens: int
+    temperature: float | None
+
+
+VARIANTS = {
+    "v0": Config("monitor_prompt_v0.txt", {"enabled": False}, 150, 0),
+    "v1": Config("monitor_prompt_v1.txt", {"enabled": False}, 150, 0),
+    "v2": Config("monitor_prompt_v1.txt", {"max_tokens": 1024}, 1500, None),
+}
 
 
 @dataclass
@@ -35,10 +50,16 @@ class MonitorResult:
     error: str | None = None
 
 
-def render_prompt(agent: str, round_r: int, record: str, scale: int) -> str:
+def render_prompt(
+    agent: str,
+    round_r: int,
+    record: str,
+    scale: int,
+    template: str = "monitor_prompt_v0.txt",
+) -> str:
     """Fill the prompt template; only SCALE differs between variants."""
-    template = PROMPT_PATH.read_text()
-    return template.format(AGENT=agent, R=round_r, RECORD=record, SCALE=scale)
+    text = (PROMPT_DIR / template).read_text()
+    return text.format(AGENT=agent, R=round_r, RECORD=record, SCALE=scale)
 
 
 def parse_probability(text: str, scale: int) -> tuple[int | None, str | None]:
@@ -78,16 +99,22 @@ def make_post(api_key: str) -> Post:
     return post
 
 
-def monitor_call(prompt: str, scale: int, post: Post) -> MonitorResult:
+def monitor_call(
+    prompt: str,
+    scale: int,
+    post: Post,
+    cfg: Config = VARIANTS["v0"],
+) -> MonitorResult:
     """Call the monitor, retrying once on a parse failure or transport error."""
     result = MonitorResult(None, None, parse_ok=False, retried=False)
     payload = {
         "model": MODEL,
         "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0,
-        "max_tokens": MAX_TOKENS,
-        "reasoning": REASONING,
+        "max_tokens": cfg.max_tokens,
+        "reasoning": cfg.reasoning,
     }
+    if cfg.temperature is not None:
+        payload["temperature"] = cfg.temperature
     for attempt in range(2):
         result.retried = attempt == 1
         try:

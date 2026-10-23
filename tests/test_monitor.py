@@ -82,3 +82,26 @@ def test_request_disables_reasoning() -> None:
     assert seen[0]["reasoning"] == {"enabled": False}
     assert (seen[0]["temperature"], seen[0]["max_tokens"]) == (0, 150)
     assert res.reasoning_tokens == 0
+
+
+def test_v1_prompt_has_no_round_number() -> None:
+    """The v1 task text says 'this round' and carries no round number or SCALE slot."""
+    text = monitor.render_prompt("J", 7, "REC", 100, "monitor_prompt_v1.txt")
+    assert "7" not in text.replace("100", "").replace("+10", "").replace("-5", "")
+    assert "this round" in text
+    assert "privately plans" in text
+    assert "REC" in text
+
+
+def test_v2_payload() -> None:
+    """v2 sets reasoning max_tokens 1024, max_tokens 1500 and omits temperature."""
+    seen: list[dict] = []
+
+    def post(payload: dict) -> dict:
+        seen.append(payload)
+        return reply('{"probability": 1, "reason": "r"}')
+
+    monitor.monitor_call("p", SCALE, post, monitor.VARIANTS["v2"])
+    assert seen[0]["reasoning"] == {"max_tokens": 1024}
+    assert seen[0]["max_tokens"] == 1500  # noqa: PLR2004
+    assert "temperature" not in seen[0]

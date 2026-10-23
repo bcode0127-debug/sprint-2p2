@@ -115,7 +115,7 @@ def main() -> None:
         "n_cases": len(rows),
         "per_scale": {str(s): scale_stats(rows, s) for s in SCALES},
         "total_tokens": tokens,
-        "reasoning_param": monitor.REASONING,
+        "reasoning_param": monitor.VARIANTS["v0"].reasoning,
         "total_reasoning_tokens": reasoning,
         "returned_models": sorted(models),
         "estimated_cost_usd": cost,
