@@ -90,3 +90,14 @@ def test_paired_bootstrap_deterministic_case() -> None:
     assert res["lower_95_one_sided"] == pytest.approx(0.5)
     assert res["p_one_sided"] == pytest.approx(1 / 201)
     assert res["n_resamples"] == 200  # noqa: PLR2004
+
+
+def test_spearman() -> None:
+    """Monotone is 1, reversed is -1, and ties use average ranks (hand value 4.5/sqrt(22.5))."""
+    x = np.array([1, 2, 3, 4])
+    assert metrics.spearman(x, x * 10) == pytest.approx(1.0)
+    assert metrics.spearman(x, -x) == pytest.approx(-1.0)
+    assert metrics.spearman(np.array([1, 2, 3, 4]), np.array([1, 2, 2, 4])) == pytest.approx(
+        0.9486832980505138,
+    )
+    assert metrics.spearman(x, np.ones(4)) is None

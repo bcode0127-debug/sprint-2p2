@@ -37,6 +37,14 @@ def auroc(scores: np.ndarray, labels: np.ndarray) -> float | None:
     return float((ranks[labels].sum() - n_pos * (n_pos + 1) / 2) / (n_pos * n_neg))
 
 
+def spearman(x: np.ndarray, y: np.ndarray) -> float | None:
+    """Return the Spearman correlation (Pearson on average ranks), or None if constant."""
+    rx, ry = _avg_ranks(np.asarray(x, float)), _avg_ranks(np.asarray(y, float))
+    if rx.std() == 0 or ry.std() == 0:
+        return None
+    return float(np.corrcoef(rx, ry)[0, 1])
+
+
 def placement_values(scores: np.ndarray, labels: np.ndarray) -> np.ndarray:
     """Return each case's share of opposite-class cases it is ranked correctly against."""
     scores = np.asarray(scores, dtype=float)

@@ -45,8 +45,8 @@ def main() -> None:
             f"one-sided 95% lower bound {primary['vs_comparator']['lower_95_one_sided']:.3f}\n"
         ),
         "## S1 to S3 (Holm-adjusted)\n",
-        "| id | view | diff | lower 95% | p | p Holm |\n|---|---|---|---|---|---|\n",
-        *(
+        "| id | view | diff | lower 95% | p | p Holm |\n|---|---|---|---|---|---|\n"
+        + "".join(
             f"| {k} | {v['view']} | {v['diff']:.3f} | {v['lower_95_one_sided']:.3f} | "
             f"{v['p_one_sided']:.3f} | {v['p_holm']:.3f} |\n"
             for k, v in tables["secondary"].items()
