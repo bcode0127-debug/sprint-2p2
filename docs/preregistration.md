@@ -1,4 +1,4 @@
-**DRAFT, NOT FROZEN**
+**FROZEN 2026-10-23T18:26:29-04:00**
 # Pre-registration (v3, Fri Oct 23 2026)
 
 Status: this file is frozen at the commit recorded in configs/frozen.json and timestamped on OSF, before the first monitor call on any threshold-split or test-split case. The scoring code refuses those calls until configs/frozen.json holds the pre-registration commit and the OSF link. PENDING items are settled before freezing, except those marked as not blocking.
