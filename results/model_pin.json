@@ -1,0 +1,14 @@
+[
+  {
+    "label": "before_step3",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-23T11:49:06-04:00"
+  },
+  {
+    "label": "after_step3",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-23T12:04:09-04:00"
+  }
+]

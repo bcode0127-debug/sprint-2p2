@@ -1,0 +1,25 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check
+        entry: .venv/bin/ruff check
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format
+        entry: .venv/bin/ruff format
+        language: system
+        types: [python]
+      - id: pytest
+        name: pytest
+        entry: .venv/bin/pytest
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: block-api-keys
+        name: block API key patterns
+        entry: 'sk-[A-Za-z0-9_-]{20,}'
+        language: pygrep
+        types: [text]
+        exclude: '^(harness/|\.env$)'
