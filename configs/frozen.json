@@ -1,0 +1,25 @@
+{
+  "agent_model": {
+    "requested": "gpt-5.2",
+    "resolved": "gpt-5.2-2025-12-11"
+  },
+  "bootstrap_resamples": 10000,
+  "frozen_at": "2026-10-23T18:26:29-04:00",
+  "monitor_model": "anthropic/claude-haiku-5.5",
+  "osf_url": "",
+  "prereg_commit": "3699338d53ebdab30ba1a7009e4df6fbfff3cc7e",
+  "seeds": {
+    "bootstrap_and_threshold_ties": 2026,
+    "random_baseline": 2026,
+    "sampling": 2026
+  },
+  "sha256": {
+    "configs/monitor.json": "bc6da2d7c5df992bc7ce2423f7b248308e65d5735b96e806a2e6a25acfb5ecb1",
+    "docs/preregistration.md": "a07ea2f7a2be513a06b594f431ae504bb0851f88518e4a048afd73cffaac34e9",
+    "prompts/monitor_prompt_v1.txt": "a526d0d078e2056c58f7d6a9a583e176b7dc8b03f30d4b4ac918d4ca54678844",
+    "scripts/analyze.py": "9c4419cfd39122999a97d88dd436daa0000e39565a6b6176e8d20c02e36c3bdd",
+    "src/sprint2p2/metrics.py": "c8b845c061b166ed64503f0042ed40a239ce550734feb910c8218503794acf08",
+    "src/sprint2p2/views.py": "6607cd0f4bb4935325914b7b6e14b98462ca83cd0c3a26bb8b0c21c03934e3f5"
+  },
+  "thresholds": {}
+}
