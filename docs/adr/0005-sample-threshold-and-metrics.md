@@ -16,4 +16,4 @@ Report only AUROC (rejected: does not answer the operating-point question). Fixe
 
 ## Consequences
 
-With 20 test games the intervals will be wide; the design reports them rather than hiding them. The primary comparator (counting rule) and S1 to S3 definitions are our assumption and are written in docs/design.md for confirmation.
+With 20 test games the intervals will be wide; the design reports them rather than hiding them. The primary comparison (Both vs Actions-only) and S1 to S3 are defined in docs/preregistration.md. The pre-registration's primary metric is recall at the frozen 10% FPR threshold; AUROC is descriptive.

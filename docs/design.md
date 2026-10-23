@@ -1,6 +1,7 @@
 # Design
 
-Date: 2026-10-23. Status: dev-stage; the monitor setting is pending a lock.
+Date: 2026-10-23. Status: dev-stage; the monitor setting is pending a lock. The analysis plan is
+`docs/preregistration.md` (DRAFT, NOT FROZEN); where this file and that one differ, that one wins.
 
 ## Pipeline
 
@@ -38,13 +39,24 @@ Positive class = break. Randomized threshold: fit (t, q) on the threshold split 
 FPR is exactly 10%, then apply unchanged to the test split. AUROC counts ties as 0.5. Comparisons are
 paired, with game-clustered bootstrap (10,000 resamples, seed 2026) and a one-sided 95% lower bound.
 
-## Comparisons (assumption, to be confirmed)
+## Comparisons (from docs/preregistration.md, DRAFT, NOT FROZEN)
 
-The task text names "primary" and "S1 to S3" without defining them. This repo uses:
+All are paired on the same agent-rounds, one-sided, with a game-clustered bootstrap.
 
-- Primary: the both view against the counting rule.
-- S1: both minus actions_only. S2: both minus messages_only. S3: both minus structured.
-- Holm correction across S1 to S3.
+- Primary: Both vs Actions-only. Success means the 5th percentile of the recall difference at the
+  frozen 10% FPR threshold is above 0; otherwise the result is a null.
+- S1: Both vs Own-announcement-only (own_only).
+- S2: Both vs No-current-round (freshness).
+- S3: the LLM monitor on Both vs the announcement counting rule.
+- S1 to S3 are Holm-corrected at alpha 0.05.
+- Decision 8: the cross-agent view (own_only) and the freshness view, plus the Fishing transfer.
+  The transfer runs only if the primary succeeds and is reported either way.
+- Controls (oracle, empty, round_only, plan rule) sit outside the Holm family and are never dropped.
+
+Status of the code: `scripts/analyze.py` and `src/sprint2p2/analysis.py` still implement an earlier
+assumed set (primary = Both vs counting, S1 = Both vs actions_only, S2 = Both vs messages_only,
+S3 = Both vs structured, AUROC-based). They are to be aligned with this section before the freeze.
+The dev-only contrasts in `results/dev_all_views.json` already follow the pre-registration.
 
 ## Missing scores
 

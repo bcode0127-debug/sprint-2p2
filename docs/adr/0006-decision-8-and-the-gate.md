@@ -1,10 +1,10 @@
 # ADR 0006: Decision 8 and the gate
 
-Date: 2026-10-23. Status: accepted.
+Date: 2026-10-23 (aligned with docs/preregistration.md the same day). Status: accepted.
 
 ## Context
 
-Held-out data (main trials 10 to 39) can only give an honest answer if the analysis is fixed before the monitor sees it. The sprint plan refers to this as decision 8; that plan is not stored in this repository, so this ADR records only the mechanism we built.
+Held-out data (main trials 10 to 39) can only give an honest answer if the analysis is fixed before the monitor sees it. Decision 8, as set out in docs/preregistration.md (DRAFT, NOT FROZEN), is the cross-agent and freshness views (own_only and freshness) plus the Fishing transfer. The Fishing transfer runs only if the primary comparison (Both vs Actions-only, one-sided) succeeds, and it is reported whichever way it lands. The pre-registration also makes S1 (Both vs Own-announcement-only), S2 (Both vs No-current-round) and S3 (the LLM on Both vs the counting rule) a Holm-corrected family. The Fishing label (any change, or over-take only) is still PENDING and must be fixed before any Fishing game runs.
 
 ## Decision
 
@@ -16,4 +16,4 @@ A convention in the README only (rejected: not enforced). Encrypting the held-ou
 
 ## Consequences
 
-Writing configs/frozen.json is a deliberate, reviewable act. Until then the pipeline can be exercised only on dev data, which is what the walking skeleton does.
+The Fishing transfer is blocked by the same freeze plus the primary result, so it cannot run on a hunch. Writing configs/frozen.json is a deliberate, reviewable act. Until then the pipeline can be exercised only on dev data, which is what the walking skeleton does.
