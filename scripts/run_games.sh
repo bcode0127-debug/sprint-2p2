@@ -35,7 +35,7 @@ launch elfarol "$N_ELFAROL"
 launch fishing "$N_FISHING"
 
 status=0
-for pid in "${pids[@]}"; do
+for pid in ${pids[@]+"${pids[@]}"}; do
   wait "$pid" || status=1
 done
 

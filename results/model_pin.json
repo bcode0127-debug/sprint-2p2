@@ -10,5 +10,26 @@
     "requested": "gpt-5.2",
     "returned_model": "gpt-5.2-2025-12-11",
     "timestamp_et": "2026-10-23T12:04:09-04:00"
+  },
+  {
+    "label": "before_main",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-23T12:51:55-04:00",
+    "note": "launcher test, no games run"
+  },
+  {
+    "label": "before_main",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-23T12:52:02-04:00",
+    "note": "launcher test, no games run"
+  },
+  {
+    "label": "after_main",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-23T12:52:04-04:00",
+    "note": "launcher test, no games run"
   }
 ]
