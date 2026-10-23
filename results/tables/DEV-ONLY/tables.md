@@ -4,15 +4,15 @@
 
 ## Primary: paired AUROC difference, Both minus Actions-only
 
-AUROC 0.607 vs 0.507; difference 0.100; one-sided 95% lower bound 0.045; success = True
+AUROC 0.607 vs 0.507; difference 0.100; one-sided 95% lower bound 0.045; success = True; two-sided 95% interval (descriptive) 0.036 to 0.165
 
 ## S1 to S3 (AUROC, one-sided, Holm at 0.05)
 
-| id | A minus B | diff | lower 95% | p | p Holm | reject |
-|---|---|---|---|---|---|---|
-| S1 | both - own_only | 0.089 | 0.070 | 0.000 | 0.000 | True |
-| S2 | both - freshness | 0.111 | 0.066 | 0.000 | 0.000 | True |
-| S3 | both - counting | -0.045 | -0.113 | 0.879 | 0.879 | False |
+| id | A minus B | diff | lower 95% | p | p Holm | reject | two-sided 95% (descriptive) |
+|---|---|---|---|---|---|---|---|
+| S1 | both - own_only | 0.089 | 0.070 | 0.000 | 0.000 | True | 0.068 to 0.118 |
+| S2 | both - freshness | 0.111 | 0.066 | 0.000 | 0.000 | True | 0.059 to 0.180 |
+| S3 | both - counting | -0.045 | -0.113 | 0.879 | 0.879 | False | -0.126 to 0.032 |
 
 ## Deployment reading: recall at the frozen 10% FPR
 

@@ -150,3 +150,26 @@ def test_recall_bootstrap_deterministic() -> None:
     assert res["diff"] == 1.0
     assert res["diff_lower_95_one_sided"] == 1.0
     assert res["diff_p_one_sided"] == pytest.approx(1 / 201)
+
+
+def test_paired_bootstrap_two_sided_interval_hand_computed() -> None:
+    """Diffs are 1 (p=.25), .5 (p=.5) and 0 (p=.25), so the 95% interval is [0, 1].
+
+    The one-sided numbers are unchanged by the added interval.
+    """
+    labels = np.array([True, False, True, False])
+    games = ["g1", "g1", "g2", "g2"]
+    a = np.array([1.0, 0.0, 1.0, 1.0])
+    b = np.array([0.0, 1.0, 1.0, 1.0])
+    res = metrics.paired_bootstrap(a, b, labels, games, n_boot=2000)
+    assert res["descriptive_two_sided_ci95"] == [pytest.approx(0.0), pytest.approx(1.0)]
+    assert res["lower_95_one_sided"] == pytest.approx(0.0)
+    assert res["diff"] == pytest.approx(0.5)
+
+
+def test_paired_bootstrap_two_sided_interval_constant_difference() -> None:
+    """A constant resample difference gives a degenerate interval at that value."""
+    labels = np.array([True, False, True, False])
+    games = ["g1", "g1", "g2", "g2"]
+    res = metrics.paired_bootstrap(labels.astype(float), np.zeros(4), labels, games, n_boot=200)
+    assert res["descriptive_two_sided_ci95"] == [pytest.approx(0.5), pytest.approx(0.5)]

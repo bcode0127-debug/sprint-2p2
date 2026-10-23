@@ -130,7 +130,8 @@ def paired_bootstrap(
     """Bootstrap AUROC(A) - AUROC(B), resampling whole games.
 
     Returns the point difference, a one-sided 95% lower bound (5th percentile) and the
-    one-sided bootstrap p-value for 'difference <= 0'.
+    one-sided bootstrap p-value for 'difference <= 0'. The two-sided 95% interval (2.5th and
+    97.5th percentiles of the same resamples) is descriptive only and feeds no test.
     """
     a, b = np.asarray(scores_a, float), np.asarray(scores_b, float)
     lab = np.asarray(labels, bool)
@@ -149,6 +150,10 @@ def paired_bootstrap(
         "diff": point,
         "lower_95_one_sided": float(np.percentile(arr, 100 * ONE_SIDED_ALPHA)),
         "p_one_sided": float((1 + np.sum(arr <= 0)) / (1 + len(arr))),
+        "descriptive_two_sided_ci95": [
+            float(np.percentile(arr, 2.5)),
+            float(np.percentile(arr, 97.5)),
+        ],
         "n_resamples": len(arr),
         "n_games": len(groups),
     }

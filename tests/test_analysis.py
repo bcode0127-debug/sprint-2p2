@@ -131,3 +131,15 @@ def test_frozen_fits_requires_every_scorer() -> None:
         analyze.frozen_fits({"thresholds": {"both": {"t": 1, "q": 0}}})
     full = {n: {"t": 1.0, "q": 0.0} for n in analysis.SCORERS}
     assert set(analyze.frozen_fits({"thresholds": full})) == set(analysis.SCORERS)
+
+
+def test_two_sided_interval_is_descriptive_for_every_contrast() -> None:
+    """Primary, S1, S2 and S3 carry the interval; it does not change success or Holm."""
+    rows = all_scorers()
+    t = analysis.analyze(rows, rows, "DEV-ONLY")
+    for entry in (t["primary"], *t["secondary"].values()):
+        low, high = entry["descriptive_two_sided_ci95"]
+        assert low <= high
+    assert t["primary"]["success"] is (t["primary"]["lower_95_one_sided"] > 0)
+    for entry in t["secondary"].values():
+        assert entry["p_holm"] >= entry["p_one_sided"]

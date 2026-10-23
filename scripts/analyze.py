@@ -78,16 +78,20 @@ def render(tables: dict) -> str:
         "## Primary: paired AUROC difference, Both minus Actions-only\n",
         (
             f"AUROC {fmt(p['auroc_a'])} vs {fmt(p['auroc_b'])}; difference {fmt(p['diff'])}; "
-            f"one-sided 95% lower bound {fmt(p['lower_95_one_sided'])}; success = {p['success']}\n"
+            f"one-sided 95% lower bound {fmt(p['lower_95_one_sided'])}; success = {p['success']}; "
+            f"two-sided 95% interval (descriptive) {fmt(p['descriptive_two_sided_ci95'][0])} to "
+            f"{fmt(p['descriptive_two_sided_ci95'][1])}\n"
         ),
         "## S1 to S3 (AUROC, one-sided, Holm at 0.05)\n",
-        "| id | A minus B | diff | lower 95% | p | p Holm | reject |",
-        "|---|---|---|---|---|---|---|",
+        "| id | A minus B | diff | lower 95% | p | p Holm | reject | two-sided 95% (descriptive) |",
+        "|---|---|---|---|---|---|---|---|",
     ]
     for k, v in tables["secondary"].items():
         lines.append(
             f"| {k} | {v['a']} - {v['b']} | {fmt(v['diff'])} | {fmt(v['lower_95_one_sided'])} | "
-            f"{fmt(v['p_one_sided'])} | {fmt(v['p_holm'])} | {v['reject_at_0.05']} |",
+            f"{fmt(v['p_one_sided'])} | {fmt(v['p_holm'])} | {v['reject_at_0.05']} | "
+            f"{fmt(v['descriptive_two_sided_ci95'][0])} to "
+            f"{fmt(v['descriptive_two_sided_ci95'][1])} |",
         )
     lines += [
         "\n## Deployment reading: recall at the frozen 10% FPR\n",

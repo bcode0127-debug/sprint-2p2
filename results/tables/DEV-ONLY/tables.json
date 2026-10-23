@@ -841,6 +841,10 @@
       "n_resamples": 10000,
       "recall": 0.159836
     },
+    "descriptive_two_sided_ci95": [
+      0.036022,
+      0.165256
+    ],
     "diff": 0.099959,
     "lower_95_one_sided": 0.045183,
     "n_games": 13,
@@ -902,6 +906,10 @@
         "n_resamples": 10000,
         "recall": 0.159836
       },
+      "descriptive_two_sided_ci95": [
+        0.067563,
+        0.117843
+      ],
       "diff": 0.088596,
       "lower_95_one_sided": 0.070068,
       "n_games": 13,
@@ -945,6 +953,10 @@
         "n_resamples": 10000,
         "recall": 0.159836
       },
+      "descriptive_two_sided_ci95": [
+        0.058782,
+        0.179596
+      ],
       "diff": 0.111281,
       "lower_95_one_sided": 0.065604,
       "n_games": 13,
@@ -988,6 +1000,10 @@
         "n_resamples": 10000,
         "recall": 0.159836
       },
+      "descriptive_two_sided_ci95": [
+        -0.125642,
+        0.031906
+      ],
       "diff": -0.045058,
       "lower_95_one_sided": -0.112961,
       "n_games": 13,
