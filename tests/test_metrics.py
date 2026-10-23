@@ -101,3 +101,10 @@ def test_spearman() -> None:
         0.9486832980505138,
     )
     assert metrics.spearman(x, np.ones(4)) is None
+
+
+def test_auroc_ci_constant_case() -> None:
+    """When every game is perfectly ranked, the interval is exactly [1, 1]."""
+    labels = np.array([True, False, True, False])
+    games = ["g1", "g1", "g2", "g2"]
+    assert metrics.auroc_ci(labels.astype(float), labels, games, n_boot=200) == [1.0, 1.0]

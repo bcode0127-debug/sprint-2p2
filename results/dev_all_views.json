@@ -1,0 +1,1242 @@
+{
+  "tag": "DEV-ONLY",
+  "note": "Thresholds fit on the development data itself (in-sample). Not a test result.",
+  "n_cases": 585,
+  "n_games": 13,
+  "both_source": "run-1 v2 scores from results/dev_prompt_round.json (not re-scored)",
+  "scorers": {
+    "both": {
+      "scorer": "both",
+      "auroc": 0.6066535262727754,
+      "auroc_ci95": [
+        0.5404768060252292,
+        0.6682037099070917
+      ],
+      "threshold": {
+        "t": 60.0,
+        "q": 0.19090909090909108,
+        "fpr_target": 0.1
+      },
+      "recall": 0.1598360655737705,
+      "fpr_achieved": 0.09970674486803519,
+      "recall_expected": 0.15789865871833086,
+      "fpr_expected": 0.1,
+      "distinct_scores": 44
+    },
+    "actions_only": {
+      "scorer": "actions_only",
+      "auroc": 0.5066943896928032,
+      "auroc_ci95": [
+        0.449538010660504,
+        0.5483605379067321
+      ],
+      "threshold": {
+        "t": 20.0,
+        "q": 0.9625,
+        "fpr_target": 0.1
+      },
+      "recall": 0.07377049180327869,
+      "fpr_achieved": 0.10263929618768329,
+      "recall_expected": 0.07207991803278688,
+      "fpr_expected": 0.09999999999999998,
+      "distinct_scores": 12
+    },
+    "messages_only": {
+      "scorer": "messages_only",
+      "auroc": 0.6248497668381328,
+      "auroc_ci95": [
+        0.5724478681995997,
+        0.6748808511996397
+      ],
+      "threshold": {
+        "t": 50.0,
+        "q": 0.7750000000000002,
+        "fpr_target": 0.1
+      },
+      "recall": 0.13524590163934427,
+      "fpr_achieved": 0.09970674486803519,
+      "recall_expected": 0.13524590163934427,
+      "fpr_expected": 0.1,
+      "distinct_scores": 39
+    },
+    "structured": {
+      "scorer": "structured",
+      "auroc": 0.6005240132685928,
+      "auroc_ci95": [
+        0.5423081751377832,
+        0.654000092763763
+      ],
+      "threshold": {
+        "t": 62.0,
+        "q": 0.6100000000000003,
+        "fpr_target": 0.1
+      },
+      "recall": 0.13524590163934427,
+      "fpr_achieved": 0.0967741935483871,
+      "recall_expected": 0.14475409836065578,
+      "fpr_expected": 0.1,
+      "distinct_scores": 38
+    },
+    "own_only": {
+      "scorer": "own_only",
+      "auroc": 0.5180580260564396,
+      "auroc_ci95": [
+        0.4451512658713192,
+        0.5839659815747303
+      ],
+      "threshold": {
+        "t": 55.0,
+        "q": 0.8416666666666666,
+        "fpr_target": 0.1
+      },
+      "recall": 0.13934426229508196,
+      "fpr_achieved": 0.10557184750733138,
+      "recall_expected": 0.134801912568306,
+      "fpr_expected": 0.1,
+      "distinct_scores": 39
+    },
+    "freshness": {
+      "scorer": "freshness",
+      "auroc": 0.4953728186144897,
+      "auroc_ci95": [
+        0.4293109773561206,
+        0.5483838233239114
+      ],
+      "threshold": {
+        "t": 58.0,
+        "q": 0.3666666666666676,
+        "fpr_target": 0.1
+      },
+      "recall": 0.11885245901639344,
+      "fpr_achieved": 0.09970674486803519,
+      "recall_expected": 0.1203551912568306,
+      "fpr_expected": 0.1,
+      "distinct_scores": 37
+    },
+    "oracle": {
+      "scorer": "oracle",
+      "auroc": 0.9999939906735253,
+      "auroc_ci95": [
+        0.9999648808171323,
+        1.0
+      ],
+      "threshold": {
+        "t": 4.0,
+        "q": 0.5071428571428573,
+        "fpr_target": 0.1
+      },
+      "recall": 1.0,
+      "fpr_achieved": 0.093841642228739,
+      "recall_expected": 1.0,
+      "fpr_expected": 0.1,
+      "distinct_scores": 18
+    },
+    "empty": {
+      "scorer": "empty",
+      "auroc": 0.5080284601701841,
+      "auroc_ci95": [
+        0.47572521307679555,
+        0.5429568772591649
+      ],
+      "threshold": {
+        "t": 15.0,
+        "q": 0.682,
+        "fpr_target": 0.1
+      },
+      "recall": 0.0942622950819672,
+      "fpr_achieved": 0.10263929618768329,
+      "recall_expected": 0.10900819672131148,
+      "fpr_expected": 0.10000000000000002,
+      "distinct_scores": 3
+    },
+    "round_only": {
+      "scorer": "round_only",
+      "auroc": 0.4885582423921927,
+      "auroc_ci95": [
+        0.44758042737404435,
+        0.5278756209094719
+      ],
+      "threshold": {
+        "t": 15.0,
+        "q": 0.22631578947368422,
+        "fpr_target": 0.1
+      },
+      "recall": 0.04918032786885246,
+      "fpr_achieved": 0.09970674486803519,
+      "recall_expected": 0.0885030198446937,
+      "fpr_expected": 0.10000000000000002,
+      "distinct_scores": 5
+    },
+    "random": {
+      "scorer": "random",
+      "auroc": 0.5180880726888131,
+      "auroc_ci95": [
+        0.4775389955123453,
+        0.5607311856713835
+      ],
+      "threshold": {
+        "t": 0.891476554402914,
+        "q": 0.1000000000000037,
+        "fpr_target": 0.1
+      },
+      "recall": 0.12295081967213115,
+      "fpr_achieved": 0.09970674486803519,
+      "recall_expected": 0.12295081967213115,
+      "fpr_expected": 0.1,
+      "distinct_scores": 585
+    },
+    "last_crowded": {
+      "scorer": "last_crowded",
+      "auroc": 0.4352495072352291,
+      "auroc_ci95": [
+        0.36769117647058824,
+        0.4954429874287926
+      ],
+      "threshold": {
+        "t": 1.0,
+        "q": 0.2525925925925926,
+        "fpr_target": 0.1
+      },
+      "recall": 0.036885245901639344,
+      "fpr_achieved": 0.10263929618768329,
+      "recall_expected": 0.06728901032179721,
+      "fpr_expected": 0.10000000000000002,
+      "distinct_scores": 2
+    },
+    "broke_last": {
+      "scorer": "broke_last",
+      "auroc": 0.4902408538051055,
+      "auroc_ci95": [
+        0.4397271511644785,
+        0.5333975568586882
+      ],
+      "threshold": {
+        "t": 1.0,
+        "q": 0.2243421052631579,
+        "fpr_target": 0.1
+      },
+      "recall": 0.0778688524590164,
+      "fpr_achieved": 0.08211143695014662,
+      "recall_expected": 0.09562122519413285,
+      "fpr_expected": 0.09999999999999998,
+      "distinct_scores": 2
+    },
+    "round_rate": {
+      "scorer": "round_rate",
+      "auroc": 0.6351497524157492,
+      "auroc_ci95": [
+        0.5729962984760965,
+        0.7064731459201454
+      ],
+      "threshold": {
+        "t": 0.5076923076923077,
+        "q": 0.40937500000000004,
+        "fpr_target": 0.1
+      },
+      "recall": 0.2336065573770492,
+      "fpr_achieved": 0.0967741935483871,
+      "recall_expected": 0.23569415983606556,
+      "fpr_expected": 0.1,
+      "distinct_scores": 8
+    },
+    "counting": {
+      "scorer": "counting",
+      "auroc": 0.6517114561799914,
+      "auroc_ci95": [
+        0.5943326009406384,
+        0.7075049190681938
+      ],
+      "threshold": {
+        "t": 4.0,
+        "q": 0.27723577235772356,
+        "fpr_target": 0.1
+      },
+      "recall": 0.14754098360655737,
+      "fpr_achieved": 0.0967741935483871,
+      "recall_expected": 0.1613421298147408,
+      "fpr_expected": 0.09999999999999998,
+      "distinct_scores": 5
+    },
+    "plan": {
+      "scorer": "plan",
+      "auroc": 0.6547641940291332,
+      "auroc_ci95": [
+        0.5897700363991982,
+        0.7195526459314221
+      ],
+      "threshold": {
+        "t": 1.0,
+        "q": 0.9216216216216216,
+        "fpr_target": 0.1
+      },
+      "recall": 0.36065573770491804,
+      "fpr_achieved": 0.09970674486803519,
+      "recall_expected": 0.385268054940186,
+      "fpr_expected": 0.09999999999999998,
+      "distinct_scores": 2
+    }
+  },
+  "per_game": {
+    "both": {
+      "main:0": {
+        "auroc": 0.4087301587301587,
+        "recall": 0.09523809523809523
+      },
+      "main:1": {
+        "auroc": 0.5192307692307693,
+        "recall": 0.15384615384615385
+      },
+      "main:2": {
+        "auroc": 0.5374493927125507,
+        "recall": 0.11538461538461539
+      },
+      "main:3": {
+        "auroc": 0.6666666666666666,
+        "recall": 0.36666666666666664
+      },
+      "main:4": {
+        "auroc": 0.6817226890756303,
+        "recall": 0.35294117647058826
+      },
+      "main:5": {
+        "auroc": 0.4990079365079365,
+        "recall": 0.0
+      },
+      "main:6": {
+        "auroc": 0.52834008097166,
+        "recall": 0.0
+      },
+      "main:7": {
+        "auroc": 0.5023041474654378,
+        "recall": 0.0
+      },
+      "main:8": {
+        "auroc": 0.43452380952380953,
+        "recall": 0.041666666666666664
+      },
+      "main:9": {
+        "auroc": 0.602,
+        "recall": 0.35
+      },
+      "pilot:0": {
+        "auroc": 0.546875,
+        "recall": 0.0
+      },
+      "pilot:1": {
+        "auroc": 0.6931818181818182,
+        "recall": 0.25
+      },
+      "pilot:2": {
+        "auroc": 0.7754010695187166,
+        "recall": 0.36363636363636365
+      }
+    },
+    "actions_only": {
+      "main:0": {
+        "auroc": 0.43452380952380953,
+        "recall": 0.09523809523809523
+      },
+      "main:1": {
+        "auroc": 0.5216346153846154,
+        "recall": 0.0
+      },
+      "main:2": {
+        "auroc": 0.47874493927125505,
+        "recall": 0.15384615384615385
+      },
+      "main:3": {
+        "auroc": 0.34444444444444444,
+        "recall": 0.06666666666666667
+      },
+      "main:4": {
+        "auroc": 0.5724789915966386,
+        "recall": 0.0
+      },
+      "main:5": {
+        "auroc": 0.5029761904761905,
+        "recall": 0.08333333333333333
+      },
+      "main:6": {
+        "auroc": 0.26214574898785425,
+        "recall": 0.0
+      },
+      "main:7": {
+        "auroc": 0.5426267281105991,
+        "recall": 0.14285714285714285
+      },
+      "main:8": {
+        "auroc": 0.49107142857142855,
+        "recall": 0.16666666666666666
+      },
+      "main:9": {
+        "auroc": 0.517,
+        "recall": 0.1
+      },
+      "pilot:0": {
+        "auroc": 0.40865384615384615,
+        "recall": 0.0
+      },
+      "pilot:1": {
+        "auroc": 0.5934343434343434,
+        "recall": 0.0
+      },
+      "pilot:2": {
+        "auroc": 0.5574866310160428,
+        "recall": 0.0
+      }
+    },
+    "messages_only": {
+      "main:0": {
+        "auroc": 0.6150793650793651,
+        "recall": 0.047619047619047616
+      },
+      "main:1": {
+        "auroc": 0.5072115384615384,
+        "recall": 0.3076923076923077
+      },
+      "main:2": {
+        "auroc": 0.7246963562753036,
+        "recall": 0.038461538461538464
+      },
+      "main:3": {
+        "auroc": 0.6877777777777778,
+        "recall": 0.13333333333333333
+      },
+      "main:4": {
+        "auroc": 0.8004201680672269,
+        "recall": 0.35294117647058826
+      },
+      "main:5": {
+        "auroc": 0.6329365079365079,
+        "recall": 0.041666666666666664
+      },
+      "main:6": {
+        "auroc": 0.7054655870445344,
+        "recall": 0.0
+      },
+      "main:7": {
+        "auroc": 0.586405529953917,
+        "recall": 0.0
+      },
+      "main:8": {
+        "auroc": 0.4444444444444444,
+        "recall": 0.0
+      },
+      "main:9": {
+        "auroc": 0.639,
+        "recall": 0.3
+      },
+      "pilot:0": {
+        "auroc": 0.578125,
+        "recall": 0.07692307692307693
+      },
+      "pilot:1": {
+        "auroc": 0.6805555555555556,
+        "recall": 0.3333333333333333
+      },
+      "pilot:2": {
+        "auroc": 0.7299465240641712,
+        "recall": 0.45454545454545453
+      }
+    },
+    "structured": {
+      "main:0": {
+        "auroc": 0.4494047619047619,
+        "recall": 0.047619047619047616
+      },
+      "main:1": {
+        "auroc": 0.5072115384615384,
+        "recall": 0.0
+      },
+      "main:2": {
+        "auroc": 0.5060728744939271,
+        "recall": 0.19230769230769232
+      },
+      "main:3": {
+        "auroc": 0.6811111111111111,
+        "recall": 0.36666666666666664
+      },
+      "main:4": {
+        "auroc": 0.6827731092436975,
+        "recall": 0.17647058823529413
+      },
+      "main:5": {
+        "auroc": 0.5138888888888888,
+        "recall": 0.125
+      },
+      "main:6": {
+        "auroc": 0.49291497975708504,
+        "recall": 0.0
+      },
+      "main:7": {
+        "auroc": 0.45276497695852536,
+        "recall": 0.0
+      },
+      "main:8": {
+        "auroc": 0.49007936507936506,
+        "recall": 0.16666666666666666
+      },
+      "main:9": {
+        "auroc": 0.619,
+        "recall": 0.1
+      },
+      "pilot:0": {
+        "auroc": 0.4699519230769231,
+        "recall": 0.07692307692307693
+      },
+      "pilot:1": {
+        "auroc": 0.5833333333333334,
+        "recall": 0.08333333333333333
+      },
+      "pilot:2": {
+        "auroc": 0.7393048128342246,
+        "recall": 0.18181818181818182
+      }
+    },
+    "own_only": {
+      "main:0": {
+        "auroc": 0.2996031746031746,
+        "recall": 0.09523809523809523
+      },
+      "main:1": {
+        "auroc": 0.31490384615384615,
+        "recall": 0.0
+      },
+      "main:2": {
+        "auroc": 0.39878542510121456,
+        "recall": 0.23076923076923078
+      },
+      "main:3": {
+        "auroc": 0.6088888888888889,
+        "recall": 0.4666666666666667
+      },
+      "main:4": {
+        "auroc": 0.5136554621848739,
+        "recall": 0.058823529411764705
+      },
+      "main:5": {
+        "auroc": 0.4246031746031746,
+        "recall": 0.08333333333333333
+      },
+      "main:6": {
+        "auroc": 0.3734817813765182,
+        "recall": 0.0
+      },
+      "main:7": {
+        "auroc": 0.4251152073732719,
+        "recall": 0.0
+      },
+      "main:8": {
+        "auroc": 0.38293650793650796,
+        "recall": 0.16666666666666666
+      },
+      "main:9": {
+        "auroc": 0.537,
+        "recall": 0.1
+      },
+      "pilot:0": {
+        "auroc": 0.3954326923076923,
+        "recall": 0.0
+      },
+      "pilot:1": {
+        "auroc": 0.5744949494949495,
+        "recall": 0.08333333333333333
+      },
+      "pilot:2": {
+        "auroc": 0.7245989304812834,
+        "recall": 0.18181818181818182
+      }
+    },
+    "freshness": {
+      "main:0": {
+        "auroc": 0.3601190476190476,
+        "recall": 0.0
+      },
+      "main:1": {
+        "auroc": 0.3317307692307692,
+        "recall": 0.0
+      },
+      "main:2": {
+        "auroc": 0.4200404858299595,
+        "recall": 0.34615384615384615
+      },
+      "main:3": {
+        "auroc": 0.5811111111111111,
+        "recall": 0.43333333333333335
+      },
+      "main:4": {
+        "auroc": 0.30462184873949577,
+        "recall": 0.0
+      },
+      "main:5": {
+        "auroc": 0.46130952380952384,
+        "recall": 0.125
+      },
+      "main:6": {
+        "auroc": 0.3340080971659919,
+        "recall": 0.0
+      },
+      "main:7": {
+        "auroc": 0.3824884792626728,
+        "recall": 0.0
+      },
+      "main:8": {
+        "auroc": 0.3621031746031746,
+        "recall": 0.08333333333333333
+      },
+      "main:9": {
+        "auroc": 0.445,
+        "recall": 0.05
+      },
+      "pilot:0": {
+        "auroc": 0.47716346153846156,
+        "recall": 0.07692307692307693
+      },
+      "pilot:1": {
+        "auroc": 0.3977272727272727,
+        "recall": 0.0
+      },
+      "pilot:2": {
+        "auroc": 0.4772727272727273,
+        "recall": 0.0
+      }
+    },
+    "oracle": {
+      "main:0": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "main:1": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "main:2": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "main:3": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "main:4": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "main:5": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "main:6": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "main:7": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "main:8": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "main:9": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "pilot:0": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "pilot:1": {
+        "auroc": 1.0,
+        "recall": 1.0
+      },
+      "pilot:2": {
+        "auroc": 1.0,
+        "recall": 1.0
+      }
+    },
+    "empty": {
+      "main:0": {
+        "auroc": 0.44742063492063494,
+        "recall": 0.09523809523809523
+      },
+      "main:1": {
+        "auroc": 0.4795673076923077,
+        "recall": 0.0
+      },
+      "main:2": {
+        "auroc": 0.5425101214574899,
+        "recall": 0.11538461538461539
+      },
+      "main:3": {
+        "auroc": 0.6833333333333333,
+        "recall": 0.1
+      },
+      "main:4": {
+        "auroc": 0.5588235294117647,
+        "recall": 0.11764705882352941
+      },
+      "main:5": {
+        "auroc": 0.5555555555555556,
+        "recall": 0.125
+      },
+      "main:6": {
+        "auroc": 0.4402834008097166,
+        "recall": 0.10526315789473684
+      },
+      "main:7": {
+        "auroc": 0.48502304147465436,
+        "recall": 0.07142857142857142
+      },
+      "main:8": {
+        "auroc": 0.5555555555555556,
+        "recall": 0.125
+      },
+      "main:9": {
+        "auroc": 0.44,
+        "recall": 0.05
+      },
+      "pilot:0": {
+        "auroc": 0.5600961538461539,
+        "recall": 0.0
+      },
+      "pilot:1": {
+        "auroc": 0.44065656565656564,
+        "recall": 0.16666666666666666
+      },
+      "pilot:2": {
+        "auroc": 0.4839572192513369,
+        "recall": 0.09090909090909091
+      }
+    },
+    "round_only": {
+      "main:0": {
+        "auroc": 0.5992063492063492,
+        "recall": 0.09523809523809523
+      },
+      "main:1": {
+        "auroc": 0.4050480769230769,
+        "recall": 0.07692307692307693
+      },
+      "main:2": {
+        "auroc": 0.3643724696356275,
+        "recall": 0.038461538461538464
+      },
+      "main:3": {
+        "auroc": 0.5,
+        "recall": 0.03333333333333333
+      },
+      "main:4": {
+        "auroc": 0.42857142857142855,
+        "recall": 0.0
+      },
+      "main:5": {
+        "auroc": 0.4156746031746032,
+        "recall": 0.0
+      },
+      "main:6": {
+        "auroc": 0.46153846153846156,
+        "recall": 0.05263157894736842
+      },
+      "main:7": {
+        "auroc": 0.5552995391705069,
+        "recall": 0.0
+      },
+      "main:8": {
+        "auroc": 0.4732142857142857,
+        "recall": 0.08333333333333333
+      },
+      "main:9": {
+        "auroc": 0.568,
+        "recall": 0.15
+      },
+      "pilot:0": {
+        "auroc": 0.41346153846153844,
+        "recall": 0.07692307692307693
+      },
+      "pilot:1": {
+        "auroc": 0.5618686868686869,
+        "recall": 0.0
+      },
+      "pilot:2": {
+        "auroc": 0.3983957219251337,
+        "recall": 0.0
+      }
+    },
+    "random": {
+      "main:0": {
+        "auroc": 0.6091269841269841,
+        "recall": 0.23809523809523808
+      },
+      "main:1": {
+        "auroc": 0.5649038461538461,
+        "recall": 0.23076923076923078
+      },
+      "main:2": {
+        "auroc": 0.4777327935222672,
+        "recall": 0.19230769230769232
+      },
+      "main:3": {
+        "auroc": 0.5866666666666667,
+        "recall": 0.26666666666666666
+      },
+      "main:4": {
+        "auroc": 0.4789915966386555,
+        "recall": 0.0
+      },
+      "main:5": {
+        "auroc": 0.5138888888888888,
+        "recall": 0.041666666666666664
+      },
+      "main:6": {
+        "auroc": 0.4473684210526316,
+        "recall": 0.0
+      },
+      "main:7": {
+        "auroc": 0.6244239631336406,
+        "recall": 0.07142857142857142
+      },
+      "main:8": {
+        "auroc": 0.5178571428571429,
+        "recall": 0.08333333333333333
+      },
+      "main:9": {
+        "auroc": 0.42,
+        "recall": 0.15
+      },
+      "pilot:0": {
+        "auroc": 0.5120192307692307,
+        "recall": 0.15384615384615385
+      },
+      "pilot:1": {
+        "auroc": 0.4090909090909091,
+        "recall": 0.0
+      },
+      "pilot:2": {
+        "auroc": 0.5668449197860963,
+        "recall": 0.0
+      }
+    },
+    "last_crowded": {
+      "main:0": {
+        "auroc": 0.47023809523809523,
+        "recall": 0.09523809523809523
+      },
+      "main:1": {
+        "auroc": 0.31971153846153844,
+        "recall": 0.0
+      },
+      "main:2": {
+        "auroc": 0.20647773279352227,
+        "recall": 0.038461538461538464
+      },
+      "main:3": {
+        "auroc": 0.2833333333333333,
+        "recall": 0.0
+      },
+      "main:4": {
+        "auroc": 0.41596638655462187,
+        "recall": 0.0
+      },
+      "main:5": {
+        "auroc": 0.5148809523809523,
+        "recall": 0.08333333333333333
+      },
+      "main:6": {
+        "auroc": 0.2520242914979757,
+        "recall": 0.0
+      },
+      "main:7": {
+        "auroc": 0.3617511520737327,
+        "recall": 0.0
+      },
+      "main:8": {
+        "auroc": 0.32142857142857145,
+        "recall": 0.0
+      },
+      "main:9": {
+        "auroc": 0.525,
+        "recall": 0.1
+      },
+      "pilot:0": {
+        "auroc": 0.5360576923076923,
+        "recall": 0.15384615384615385
+      },
+      "pilot:1": {
+        "auroc": 0.5,
+        "recall": 0.0
+      },
+      "pilot:2": {
+        "auroc": 0.5935828877005348,
+        "recall": 0.0
+      }
+    },
+    "broke_last": {
+      "main:0": {
+        "auroc": 0.3333333333333333,
+        "recall": 0.047619047619047616
+      },
+      "main:1": {
+        "auroc": 0.45913461538461536,
+        "recall": 0.15384615384615385
+      },
+      "main:2": {
+        "auroc": 0.44635627530364375,
+        "recall": 0.07692307692307693
+      },
+      "main:3": {
+        "auroc": 0.48333333333333334,
+        "recall": 0.06666666666666667
+      },
+      "main:4": {
+        "auroc": 0.44432773109243695,
+        "recall": 0.0
+      },
+      "main:5": {
+        "auroc": 0.4880952380952381,
+        "recall": 0.08333333333333333
+      },
+      "main:6": {
+        "auroc": 0.3694331983805668,
+        "recall": 0.10526315789473684
+      },
+      "main:7": {
+        "auroc": 0.5172811059907834,
+        "recall": 0.07142857142857142
+      },
+      "main:8": {
+        "auroc": 0.37797619047619047,
+        "recall": 0.041666666666666664
+      },
+      "main:9": {
+        "auroc": 0.435,
+        "recall": 0.15
+      },
+      "pilot:0": {
+        "auroc": 0.5745192307692307,
+        "recall": 0.15384615384615385
+      },
+      "pilot:1": {
+        "auroc": 0.5037878787878788,
+        "recall": 0.08333333333333333
+      },
+      "pilot:2": {
+        "auroc": 0.5347593582887701,
+        "recall": 0.0
+      }
+    },
+    "round_rate": {
+      "main:0": {
+        "auroc": 0.5496031746031746,
+        "recall": 0.19047619047619047
+      },
+      "main:1": {
+        "auroc": 0.7644230769230769,
+        "recall": 0.3076923076923077
+      },
+      "main:2": {
+        "auroc": 0.45445344129554655,
+        "recall": 0.15384615384615385
+      },
+      "main:3": {
+        "auroc": 0.5055555555555555,
+        "recall": 0.16666666666666666
+      },
+      "main:4": {
+        "auroc": 0.7100840336134454,
+        "recall": 0.4117647058823529
+      },
+      "main:5": {
+        "auroc": 0.5793650793650794,
+        "recall": 0.125
+      },
+      "main:6": {
+        "auroc": 0.5708502024291497,
+        "recall": 0.21052631578947367
+      },
+      "main:7": {
+        "auroc": 0.8744239631336406,
+        "recall": 0.42857142857142855
+      },
+      "main:8": {
+        "auroc": 0.7579365079365079,
+        "recall": 0.2916666666666667
+      },
+      "main:9": {
+        "auroc": 0.82,
+        "recall": 0.25
+      },
+      "pilot:0": {
+        "auroc": 0.5300480769230769,
+        "recall": 0.23076923076923078
+      },
+      "pilot:1": {
+        "auroc": 0.6641414141414141,
+        "recall": 0.08333333333333333
+      },
+      "pilot:2": {
+        "auroc": 0.6203208556149733,
+        "recall": 0.36363636363636365
+      }
+    },
+    "counting": {
+      "main:0": {
+        "auroc": 0.6706349206349206,
+        "recall": 0.09523809523809523
+      },
+      "main:1": {
+        "auroc": 0.5276442307692307,
+        "recall": 0.23076923076923078
+      },
+      "main:2": {
+        "auroc": 0.6558704453441295,
+        "recall": 0.19230769230769232
+      },
+      "main:3": {
+        "auroc": 0.6422222222222222,
+        "recall": 0.13333333333333333
+      },
+      "main:4": {
+        "auroc": 0.6186974789915967,
+        "recall": 0.17647058823529413
+      },
+      "main:5": {
+        "auroc": 0.6190476190476191,
+        "recall": 0.16666666666666666
+      },
+      "main:6": {
+        "auroc": 0.5172064777327935,
+        "recall": 0.05263157894736842
+      },
+      "main:7": {
+        "auroc": 0.7188940092165899,
+        "recall": 0.07142857142857142
+      },
+      "main:8": {
+        "auroc": 0.6488095238095238,
+        "recall": 0.20833333333333334
+      },
+      "main:9": {
+        "auroc": 0.788,
+        "recall": 0.15
+      },
+      "pilot:0": {
+        "auroc": 0.5252403846153846,
+        "recall": 0.23076923076923078
+      },
+      "pilot:1": {
+        "auroc": 0.8042929292929293,
+        "recall": 0.16666666666666666
+      },
+      "pilot:2": {
+        "auroc": 0.5655080213903744,
+        "recall": 0.0
+      }
+    },
+    "plan": {
+      "main:0": {
+        "auroc": 0.6964285714285714,
+        "recall": 0.38095238095238093
+      },
+      "main:1": {
+        "auroc": 0.6923076923076923,
+        "recall": 0.3076923076923077
+      },
+      "main:2": {
+        "auroc": 0.8319838056680162,
+        "recall": 0.6538461538461539
+      },
+      "main:3": {
+        "auroc": 0.7833333333333333,
+        "recall": 0.4
+      },
+      "main:4": {
+        "auroc": 0.5756302521008403,
+        "recall": 0.29411764705882354
+      },
+      "main:5": {
+        "auroc": 0.5119047619047619,
+        "recall": 0.16666666666666666
+      },
+      "main:6": {
+        "auroc": 0.7965587044534413,
+        "recall": 0.631578947368421
+      },
+      "main:7": {
+        "auroc": 0.6370967741935484,
+        "recall": 0.5
+      },
+      "main:8": {
+        "auroc": 0.5773809523809523,
+        "recall": 0.20833333333333334
+      },
+      "main:9": {
+        "auroc": 0.585,
+        "recall": 0.2
+      },
+      "pilot:0": {
+        "auroc": 0.6923076923076923,
+        "recall": 0.3076923076923077
+      },
+      "pilot:1": {
+        "auroc": 0.5416666666666666,
+        "recall": 0.4166666666666667
+      },
+      "pilot:2": {
+        "auroc": 0.5013368983957219,
+        "recall": 0.09090909090909091
+      }
+    }
+  },
+  "contrasts": {
+    "primary": {
+      "auroc": {
+        "mean_paired_difference": 0.09995913657997213,
+        "mean_of_per_game_differences": 0.08986244781646818,
+        "between_game_sd": 0.12054229464260878,
+        "n_games_used": 13,
+        "min_detectable_difference_20_games": 0.06991453089271309
+      },
+      "recall": {
+        "mean_paired_difference": 0.08606557377049182,
+        "mean_of_per_game_differences": 0.09852089840777624,
+        "between_game_sd": 0.18568379017633135,
+        "n_games_used": 13,
+        "min_detectable_difference_20_games": 0.10769659830227218
+      }
+    },
+    "S1": {
+      "auroc": {
+        "mean_paired_difference": 0.08859550021633578,
+        "mean_of_per_game_differences": 0.10937949985228909,
+        "between_game_sd": 0.0507478423045564,
+        "n_games_used": 13,
+        "min_detectable_difference_20_games": 0.029433748536642712
+      },
+      "recall": {
+        "mean_paired_difference": 0.020491803278688547,
+        "mean_of_per_game_differences": 0.047902361590144396,
+        "between_game_sd": 0.14421114181907957,
+        "n_games_used": 13,
+        "min_detectable_difference_20_games": 0.08364246225506615
+      }
+    },
+    "S2": {
+      "auroc": {
+        "mean_paired_difference": 0.11128070765828568,
+        "mean_of_per_game_differences": 0.15851827228268817,
+        "between_game_sd": 0.10748395710674216,
+        "n_games_used": 13,
+        "min_detectable_difference_20_games": 0.06234069512191045
+      },
+      "recall": {
+        "mean_paired_difference": 0.04098360655737707,
+        "mean_of_per_game_differences": 0.07497201139735077,
+        "between_game_sd": 0.19363723247891249,
+        "n_games_used": 13,
+        "min_detectable_difference_20_games": 0.11230959483776923
+      }
+    },
+    "S3": {
+      "auroc": {
+        "mean_paired_difference": -0.04505792990721602,
+        "mean_of_per_game_differences": -0.06974113265247385,
+        "between_game_sd": 0.13627675793708913,
+        "n_games_used": 13,
+        "min_detectable_difference_20_games": 0.07904051960351169
+      },
+      "recall": {
+        "mean_paired_difference": 0.012295081967213128,
+        "mean_of_per_game_differences": 0.016520365401051278,
+        "between_game_sd": 0.18021528955708016,
+        "n_games_used": 13,
+        "min_detectable_difference_20_games": 0.10452486794310649
+      }
+    }
+  },
+  "controls": {
+    "oracle": {
+      "recall": 1.0,
+      "auroc": 0.9999939906735253,
+      "pass": true
+    },
+    "empty": {
+      "auroc": 0.5080284601701841,
+      "pass": true
+    },
+    "round_only_vs_round_rate": {
+      "round_only_auroc": 0.4885582423921927,
+      "round_rate_auroc": 0.6351497524157492,
+      "round_only_recall": 0.04918032786885246,
+      "round_rate_recall": 0.2336065573770492,
+      "auroc_difference": -0.14659151002355653
+    }
+  },
+  "parse_failures": {
+    "both": 0,
+    "actions_only": 0,
+    "messages_only": 0,
+    "structured": 0,
+    "own_only": 0,
+    "freshness": 0,
+    "oracle": 0,
+    "empty": 0,
+    "round_only": 0,
+    "random": 0,
+    "last_crowded": 0,
+    "broke_last": 0,
+    "round_rate": 0,
+    "counting": 0,
+    "plan": 0
+  },
+  "tokens": {
+    "actions_only": {
+      "prompt": 270662,
+      "completion": 103387,
+      "reasoning": 62814
+    },
+    "messages_only": {
+      "prompt": 930649,
+      "completion": 190132,
+      "reasoning": 144233
+    },
+    "structured": {
+      "prompt": 306119,
+      "completion": 210206,
+      "reasoning": 162727
+    },
+    "own_only": {
+      "prompt": 711917,
+      "completion": 191614,
+      "reasoning": 144410
+    },
+    "freshness": {
+      "prompt": 627609,
+      "completion": 182472,
+      "reasoning": 138282
+    },
+    "oracle": {
+      "prompt": 1019857,
+      "completion": 124229,
+      "reasoning": 93443
+    },
+    "empty": {
+      "prompt": 160524,
+      "completion": 41404,
+      "reasoning": 251
+    },
+    "round_only": {
+      "prompt": 164034,
+      "completion": 81293,
+      "reasoning": 45482
+    }
+  },
+  "estimated_cost_usd": 0.9815056,
+  "budget": {
+    "usage_before": 0.8141377,
+    "estimate_before_run": 2.106,
+    "usage_after": 1.7866473
+  },
+  "concurrency": 32,
+  "run_time_seconds": 479.10537219047546
+}

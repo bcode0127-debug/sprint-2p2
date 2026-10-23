@@ -83,6 +83,13 @@ def case_uniforms(keys: list[str], seed: int = SEED) -> np.ndarray:
     return np.array([random.Random(f"{seed}|{k}").random() for k in keys])  # noqa: S311
 
 
+def flags(scores: np.ndarray, keys: list[str], fit: dict, seed: int = SEED) -> np.ndarray:
+    """Return which cases are flagged under a frozen fit {t, q} (randomized at ties)."""
+    scores = np.asarray(scores, dtype=float)
+    u = case_uniforms(keys, seed)
+    return (scores > fit["t"]) | ((scores == fit["t"]) & (u < fit["q"]))
+
+
 def apply_threshold(
     scores: np.ndarray,
     labels: np.ndarray,
@@ -95,8 +102,7 @@ def apply_threshold(
     t, q = fit["t"], fit["q"]
     scores = np.asarray(scores, dtype=float)
     labels = np.asarray(labels, dtype=bool)
-    u = case_uniforms(keys, seed)
-    flagged = (scores > t) | ((scores == t) & (u < q))
+    flagged = flags(scores, keys, fit, seed)
     expected = (scores > t) + q * (scores == t)
     return {
         "recall": float(flagged[labels].mean()),
@@ -194,3 +200,24 @@ def paired_decomposition(
     out = variance_decomposition(delta, games)
     out["mean_difference"] = float(delta.mean())
     return out
+
+
+def auroc_ci(
+    scores: np.ndarray,
+    labels: np.ndarray,
+    games: list[str],
+    n_boot: int = N_BOOT,
+) -> list[float]:
+    """Return a two-sided 95% percentile interval for AUROC, resampling whole games."""
+    s, lab = np.asarray(scores, float), np.asarray(labels, bool)
+    groups = _groups(games)
+    rng = np.random.default_rng(SEED)
+    stats = []
+    for _ in range(n_boot):
+        pick = rng.integers(0, len(groups), len(groups))
+        idx = np.concatenate([groups[i] for i in pick])
+        value = auroc(s[idx], lab[idx])
+        if value is not None:
+            stats.append(value)
+    low, high = np.percentile(stats, [2.5, 97.5])
+    return [float(low), float(high)]

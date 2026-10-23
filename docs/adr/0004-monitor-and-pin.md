@@ -8,7 +8,7 @@ The monitor is anthropic/claude-haiku-5.5 through OpenRouter. By default it spen
 
 ## Decision
 
-The candidate setting is v2: prompt `prompts/monitor_prompt_v1.txt`, scale 0 to 100, reasoning {max_tokens: 1024}, max_tokens 1500, temperature omitted. It is stored only in `configs/monitor.json` and is marked pending a lock. Calls use up to 8 concurrent workers (the key endpoint reports no request cap; the $10 spend cap is the binding limit) with exponential backoff on 429 and 5xx. Every call logs the returned model, prompt and completion tokens and reasoning tokens.
+The candidate setting is v2: prompt `prompts/monitor_prompt_v1.txt`, scale 0 to 100, reasoning {max_tokens: 1024}, max_tokens 1500, temperature omitted. It is stored only in `configs/monitor.json` and is marked pending a lock. Calls use up to 32 concurrent workers (8 until the full development run) (the key endpoint reports no request cap; the $10 spend cap is the binding limit) with exponential backoff on 429 and 5xx. Every call logs the returned model, prompt and completion tokens and reasoning tokens.
 
 ## Alternatives considered
 
