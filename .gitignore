@@ -5,3 +5,5 @@ outputs/
 __pycache__/
 .ruff_cache/
 .pytest_cache/
+*.log
+*.done
