@@ -39,24 +39,31 @@ Positive class = break. Randomized threshold: fit (t, q) on the threshold split 
 FPR is exactly 10%, then apply unchanged to the test split. AUROC counts ties as 0.5. Comparisons are
 paired, with game-clustered bootstrap (10,000 resamples, seed 2026) and a one-sided 95% lower bound.
 
-## Comparisons (from docs/preregistration.md, DRAFT, NOT FROZEN)
+## Comparisons (from docs/preregistration.md v2, DRAFT, NOT FROZEN)
 
-All are paired on the same agent-rounds, one-sided, with a game-clustered bootstrap.
+All are paired on the same agent-rounds and one-sided, using a bootstrap over whole test games
+(10,000 resamples, seed 2026). Both AUROCs are recomputed inside every resample.
 
-- Primary: Both vs Actions-only. Success means the 5th percentile of the recall difference at the
-  frozen 10% FPR threshold is above 0; otherwise the result is a null.
-- S1: Both vs Own-announcement-only (own_only).
-- S2: Both vs No-current-round (freshness).
-- S3: the LLM monitor on Both vs the announcement counting rule.
-- S1 to S3 are Holm-corrected at alpha 0.05.
+- Primary: the AUROC difference Both minus Actions-only on the test split. Success means the 5th
+  percentile of the difference is above 0; otherwise the result is a null. (Changed decision 7:
+  the primary was recall at the frozen 10% FPR threshold until 4:36 PM ET on Oct 23, recorded
+  before any development view contrast was seen.)
+- S1: Both minus Own-announcement-only (own_only), AUROC.
+- S2: Both minus No-current-round (freshness), AUROC.
+- S3: the LLM monitor on Both minus the announcement counting rule, AUROC.
+- S1 to S3 are Holm-corrected at alpha 0.05, one-sided.
+- Deployment reading (reported, not part of the success claim): recall at the frozen 10% FPR
+  threshold for every view and rule, and for the primary and S1 to S3 contrasts, with one-sided
+  intervals and the test FPR actually achieved.
 - Decision 8: the cross-agent view (own_only) and the freshness view, plus the Fishing transfer.
   The transfer runs only if the primary succeeds and is reported either way.
 - Controls (oracle, empty, round_only, plan rule) sit outside the Holm family and are never dropped.
+- Power: the minimum detectable difference at 20 test games is 0.58 times the between-game SD of
+  the paired difference.
 
-Status of the code: `scripts/analyze.py` and `src/sprint2p2/analysis.py` still implement an earlier
-assumed set (primary = Both vs counting, S1 = Both vs actions_only, S2 = Both vs messages_only,
-S3 = Both vs structured, AUROC-based). They are to be aligned with this section before the freeze.
-The dev-only contrasts in `results/dev_all_views.json` already follow the pre-registration.
+`scripts/analyze.py` implements sections 6 to 8 of the pre-registration. The threshold and test
+splits are refused unless `configs/frozen.json` exists; `--dev-only` uses development data for both
+roles and labels every output DEV-ONLY.
 
 ## Missing scores
 

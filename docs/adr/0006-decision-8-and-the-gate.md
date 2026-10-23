@@ -8,7 +8,7 @@ Held-out data (main trials 10 to 39) can only give an honest answer if the analy
 
 ## Decision
 
-No monitor call may be made on a threshold or test case unless `configs/frozen.json` exists with non-empty `prereg_commit` and `osf_url` fields. The check runs when a split is selected and again for every case, using the case's raw identity (main trial 10 or above), so a wrong split label cannot bypass it. Development work loads main trials 0 to 9 only; the dev loader drops later trials before building cases. Tests cover a missing file, empty fields, malformed JSON, the open gate, and the per-case guard.
+No monitor call may be made on a threshold or test case unless `configs/frozen.json` allows it. Threshold-split calls need a non-empty `prereg_commit` and a non-empty `osf_url`. Test-split calls also need per-view `t` and `q`, written into the same file by `scripts/fit_thresholds.py` from threshold-split scores. `scripts/freeze.py` writes the file at the freeze with `osf_url` empty, so the threshold split stays blocked until the OSF registration exists. The check runs when a split is selected and again for every case, using the case's raw identity (main trial 10 or above), so a wrong split label cannot bypass it. Development work loads main trials 0 to 9 only; the dev loader drops later trials before building cases. Tests cover a missing file, empty fields, malformed JSON, the open gate, and the per-case guard.
 
 ## Alternatives considered
 

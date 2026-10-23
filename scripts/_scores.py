@@ -16,7 +16,7 @@ def load_dir(directory: Path) -> dict[str, dict]:
 
 def pick(*, dev_only: bool) -> tuple[dict, dict, str]:
     """Return (threshold rows, test rows, tag); dev-only uses dev for both."""
-    if dev_only or not (SCORES / "test" / f"{analysis.PRIMARY_VIEW}.jsonl").exists():
+    if dev_only or not (SCORES / "test" / f"{analysis.PRIMARY[0]}.jsonl").exists():
         dev = load_dir(SCORES / "dev")
         return dev, dev, DEV_TAG
     return load_dir(SCORES / "threshold"), load_dir(SCORES / "test"), ""

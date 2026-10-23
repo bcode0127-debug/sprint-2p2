@@ -108,3 +108,45 @@ def test_auroc_ci_constant_case() -> None:
     labels = np.array([True, False, True, False])
     games = ["g1", "g1", "g2", "g2"]
     assert metrics.auroc_ci(labels.astype(float), labels, games, n_boot=200) == [1.0, 1.0]
+
+
+def test_paired_bootstrap_no_difference() -> None:
+    """Identical scorers: diff 0, lower bound 0, one-sided p exactly 1."""
+    labels = np.array([True, False, True, False])
+    games = ["g1", "g1", "g2", "g2"]
+    scores = np.array([3.0, 1.0, 2.0, 4.0])
+    res = metrics.paired_bootstrap(scores, scores, labels, games, n_boot=100)
+    assert (res["diff"], res["lower_95_one_sided"], res["p_one_sided"]) == (0.0, 0.0, 1.0)
+
+
+def test_paired_bootstrap_recomputes_both_aurocs_per_resample() -> None:
+    """A wins in game 1 only (AUROC 1 vs 0); game 2 ties. Diffs are 1, 0.5 or 0 by resample."""
+    labels = np.array([True, False, True, False])
+    games = ["g1", "g1", "g2", "g2"]
+    a = np.array([1.0, 0.0, 1.0, 1.0])
+    b = np.array([0.0, 1.0, 1.0, 1.0])
+    res = metrics.paired_bootstrap(a, b, labels, games, n_boot=2000)
+    assert res["diff"] == pytest.approx(0.5)
+    assert res["lower_95_one_sided"] == pytest.approx(0.0)
+    assert 0.2 < res["p_one_sided"] < 0.3  # noqa: PLR2004
+
+
+def test_holm_all_significant_and_ordering() -> None:
+    """Holm: .001/.01/.02 give .003/.02/.02; equal p-values stay monotone."""
+    adj = metrics.holm({"a": 0.001, "b": 0.01, "c": 0.02})
+    assert adj == {"a": pytest.approx(0.003), "b": pytest.approx(0.02), "c": pytest.approx(0.02)}
+    assert all(0 <= v <= 1 for v in adj.values())
+
+
+def test_recall_bootstrap_deterministic() -> None:
+    """A flags every break, B none: recall 1 vs 0 in every resample."""
+    labels = np.array([True, False, True, False])
+    games = ["g1", "g1", "g2", "g2"]
+    flag_a = np.array([True, False, True, False])
+    flag_b = np.zeros(4, dtype=bool)
+    res = metrics.recall_bootstrap(flag_a, labels, games, flag_b, n_boot=200)
+    assert res["recall"] == 1.0
+    assert res["lower_95_one_sided"] == 1.0
+    assert res["diff"] == 1.0
+    assert res["diff_lower_95_one_sided"] == 1.0
+    assert res["diff_p_one_sided"] == pytest.approx(1 / 201)

@@ -1,6 +1,6 @@
 # ADR 0005: Sample, threshold and metrics
 
-Date: 2026-10-23. Status: accepted.
+Date: 2026-10-23 (changed decision 7 applied the same day). Status: accepted.
 
 ## Context
 
@@ -16,4 +16,4 @@ Report only AUROC (rejected: does not answer the operating-point question). Fixe
 
 ## Consequences
 
-With 20 test games the intervals will be wide; the design reports them rather than hiding them. The primary comparison (Both vs Actions-only) and S1 to S3 are defined in docs/preregistration.md. The pre-registration's primary metric is recall at the frozen 10% FPR threshold; AUROC is descriptive.
+With 20 test games the intervals will be wide; the design reports them rather than hiding them. The primary comparison (Both vs Actions-only) and S1 to S3 are defined in docs/preregistration.md. Changed decision 7 (recorded 4:36 PM ET, Oct 23, before any development view contrast was seen): the primary metric is the paired AUROC difference, not recall at the frozen 10% FPR threshold. Reason: at 10% FPR on the development set the monitor on Both and the counting rule have nearly the same recall (0.158 and 0.161, against 0.10 for random) while AUROC separates them (0.479, 0.607, 0.652), so the claim is about ranking. Recall at the frozen threshold stays as a pre-registered deployment reading with one-sided intervals.

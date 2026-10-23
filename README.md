@@ -30,19 +30,28 @@ OPENROUTER_API_KEY=  # runs the Haiku 5.5 monitor
 make reproduce
 ```
 
-This recomputes the primary row from the committed score files with no API calls and prints the row
-and its SHA-256. While only development scores exist it uses `scores/dev/` and labels the output
+This recomputes the primary row (the paired AUROC difference Both minus Actions-only) from the
+committed score files with no API calls and prints the row and its SHA-256. While only development scores exist it uses `scores/dev/` and labels the output
 DEV-ONLY. Install dependencies from `requirements.lock` (Python 3.12).
 
 Other targets: `make test`, `make lint`. The pipeline is `scripts/score_views.py` (scores a split),
 `scripts/analyze.py` (tables) and `scripts/reproduce_row.py`.
 
+## Pre-registration
+
+The analysis plan is `docs/preregistration.md` (v2, DRAFT, NOT FROZEN). The primary test is the
+paired AUROC difference Both minus Actions-only on the test split, one-sided, with a bootstrap over
+whole games. S1 to S3 and the deployment reading (recall at 10% FPR) are secondary. The freeze
+record will be `configs/frozen.json`; the OSF link goes here once the registration exists:
+OSF: not yet registered.
+
 ## Data and gate
 
 Raw logs are in `data/raw/` with `SHA256SUMS`. Splits are dev (pilot plus main trials 0 to 9),
 threshold (trials 10 to 19) and test (trials 20 to 39), rounds 1 to 9; round 0 is a separate set.
-The monitor refuses to score threshold or test cases until `configs/frozen.json` exists with a
-non-empty `prereg_commit` and `osf_url` (see `docs/adr/0006-decision-8-and-the-gate.md`).
+Threshold cases need `configs/frozen.json` with a non-empty `prereg_commit` and `osf_url`; test
+cases also need per-view `t` and `q` written by `scripts/fit_thresholds.py`
+(see `docs/adr/0006-decision-8-and-the-gate.md`).
 
 ## Costs
 

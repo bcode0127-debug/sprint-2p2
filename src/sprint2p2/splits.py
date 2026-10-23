@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 
+from sprint2p2 import views
 from sprint2p2.data import break_flag
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -15,6 +16,7 @@ SCORED_ROUNDS = range(1, 10)
 ROUND_ZERO = range(1)
 GATED = ("threshold", "test")
 FIRST_HELD_OUT_TRIAL = 10
+FIRST_TEST_TRIAL = 20
 FROZEN_FIELDS = ("prereg_commit", "osf_url")
 
 
@@ -30,31 +32,67 @@ def load_logs() -> dict[str, dict]:
     }
 
 
-def frozen_ok(path: Path = FROZEN) -> bool:
-    """Return True when the freeze file exists with non-empty prereg_commit and osf_url."""
+def _nonempty(frozen: dict, key: str) -> bool:
+    """Return True when frozen[key] is a non-blank string."""
+    return isinstance(frozen.get(key), str) and bool(frozen[key].strip())
+
+
+def _has_thresholds(frozen: dict) -> bool:
+    """Return True when every monitor view has a numeric t and q."""
+    fits = frozen.get("thresholds")
+    return isinstance(fits, dict) and all(
+        isinstance(fits.get(v), dict)
+        and all(isinstance(fits[v].get(k), (int, float)) for k in ("t", "q"))
+        for v in views.VIEWS
+    )
+
+
+def gate_ok(split: str, path: Path = FROZEN) -> bool:
+    """Return True when the freeze file allows monitor calls on the split.
+
+    Threshold calls need prereg_commit and a non-empty osf_url. Test calls also need
+    per-view t and q, written by scripts/fit_thresholds.py from threshold-split scores.
+    """
+    if split not in GATED:
+        return True
     if not path.exists():
         return False
     try:
         frozen = json.loads(path.read_text())
     except json.JSONDecodeError:
         return False
-    return isinstance(frozen, dict) and all(
-        isinstance(frozen.get(k), str) and frozen[k].strip() for k in FROZEN_FIELDS
-    )
+    if not isinstance(frozen, dict):
+        return False
+    if not all(_nonempty(frozen, k) for k in FROZEN_FIELDS):
+        return False
+    return split != "test" or _has_thresholds(frozen)
 
 
 def check_gate(split: str, path: Path = FROZEN) -> None:
     """Raise unless the split may be scored by the monitor."""
-    if split in GATED and not frozen_ok(path):
-        msg = f"monitor calls on the {split} split need {path.name} with prereg_commit and osf_url"
+    if not gate_ok(split, path):
+        need = "prereg_commit and a non-empty osf_url"
+        if split == "test":
+            need += ", plus per-view t and q from scripts/fit_thresholds.py"
+        msg = f"monitor calls on the {split} split need {path.name} with {need}"
         raise GateError(msg)
+
+
+def held_out_split(case: dict) -> str | None:
+    """Return the split a case belongs to by its raw identity (main trial number)."""
+    if case["source"] != "main" or case["trial"] < FIRST_HELD_OUT_TRIAL:
+        return None
+    return "threshold" if case["trial"] < FIRST_TEST_TRIAL else "test"
 
 
 def guard_case(case: dict, path: Path = FROZEN) -> None:
     """Gate one case by its raw identity, so a wrong split label cannot bypass it."""
-    held_out = case["source"] == "main" and case["trial"] >= FIRST_HELD_OUT_TRIAL
-    if held_out or case.get("split") in GATED:
-        check_gate("test" if held_out else case["split"], path)
+    by_trial = held_out_split(case)
+    declared = case.get("split")
+    for split in ("test", "threshold"):
+        if split in (by_trial, declared):
+            check_gate(split, path)
+            break
 
 
 def split_cases(logs: dict[str, dict], split: str, *, round_zero: bool = False) -> list[dict]:

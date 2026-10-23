@@ -221,3 +221,46 @@ def auroc_ci(
             stats.append(value)
     low, high = np.percentile(stats, [2.5, 97.5])
     return [float(low), float(high)]
+
+
+def _lower(values: list[float]) -> float:
+    """Return the 5th percentile, the one-sided 95% lower bound."""
+    return float(np.percentile(values, 100 * ONE_SIDED_ALPHA))
+
+
+def recall_bootstrap(
+    flags_a: np.ndarray,
+    labels: np.ndarray,
+    games: list[str],
+    flags_b: np.ndarray | None = None,
+    n_boot: int = N_BOOT,
+) -> dict:
+    """Bootstrap recall (and the paired recall difference A - B) over whole games.
+
+    The flags are fixed (frozen threshold), so only the sample of games varies.
+    """
+    a, lab = np.asarray(flags_a, bool), np.asarray(labels, bool)
+    b = None if flags_b is None else np.asarray(flags_b, bool)
+    groups = _groups(games)
+    rng = np.random.default_rng(SEED)
+    recalls, diffs = [], []
+    for _ in range(n_boot):
+        idx = np.concatenate([groups[i] for i in rng.integers(0, len(groups), len(groups))])
+        breaks = lab[idx]
+        if not breaks.any():
+            continue
+        recalls.append(float(a[idx][breaks].mean()))
+        if b is not None:
+            diffs.append(recalls[-1] - float(b[idx][breaks].mean()))
+    out = {
+        "recall": float(a[lab].mean()),
+        "lower_95_one_sided": _lower(recalls),
+        "n_resamples": len(recalls),
+    }
+    if b is not None:
+        out.update(
+            diff=float(a[lab].mean() - b[lab].mean()),
+            diff_lower_95_one_sided=_lower(diffs),
+            diff_p_one_sided=float((1 + np.sum(np.array(diffs) <= 0)) / (1 + len(diffs))),
+        )
+    return out
