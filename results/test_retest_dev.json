@@ -1,0 +1,59 @@
+{
+  "tag": "DEV-ONLY",
+  "n_cases": 585,
+  "n_games": 13,
+  "view": "both",
+  "config": "configs/monitor.json (v2: prompt v1, reasoning max_tokens 1024, temperature omitted)",
+  "spearman_run1_run2": 0.8598993952420804,
+  "n_pairs_both_parsed": 585,
+  "exact_agreement_share": 0.1675213675213675,
+  "mean_abs_score_difference": 7.5606837606837605,
+  "auroc": {
+    "run1": 0.6066535262727754,
+    "run2": 0.6246935243497909,
+    "change_run2_minus_run1": 0.018039998077015507
+  },
+  "auroc_change_bootstrap": {
+    "diff": 0.018039998077015507,
+    "lower_95_one_sided": -0.005609843310310175,
+    "p_one_sided": 0.10108989101089891,
+    "n_resamples": 10000,
+    "n_games": 13
+  },
+  "threshold_fit_on_run1": {
+    "t": 60.0,
+    "q": 0.19090909090909108,
+    "fpr_target": 0.1
+  },
+  "threshold_applied_unchanged": {
+    "run1": {
+      "recall": 0.1598360655737705,
+      "fpr": 0.09970674486803519,
+      "recall_expected": 0.15789865871833086,
+      "fpr_expected": 0.1,
+      "n_break": 244,
+      "n_keep": 341
+    },
+    "run2": {
+      "recall": 0.1557377049180328,
+      "fpr": 0.11143695014662756,
+      "recall_expected": 0.16259314456035767,
+      "fpr_expected": 0.11690215942415356,
+      "n_break": 244,
+      "n_keep": 341
+    }
+  },
+  "parse_failures": {
+    "run1": 0,
+    "run2": 0
+  },
+  "run2_tokens": {
+    "prompt": 1011709,
+    "completion": 228037,
+    "reasoning": 180084
+  },
+  "run2_estimated_cost_usd": 0.21518939999999998,
+  "run2_returned_models": [
+    "anthropic/claude-haiku-5.5"
+  ]
+}
