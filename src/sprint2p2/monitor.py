@@ -2,6 +2,7 @@
 
 import json
 import re
+import time
 import urllib.error
 import urllib.request
 from collections.abc import Callable
@@ -26,6 +27,27 @@ class Config:
     reasoning: dict
     max_tokens: int
     temperature: float | None
+    model: str = MODEL
+    scale: int = 100
+
+
+RETRY_CODES = (429, 500, 502, 503, 504)
+ATTEMPTS = 5
+BASE_DELAY_S = 1.0
+CONFIG_PATH = PROMPT_DIR.parent / "configs" / "monitor.json"
+
+
+def load_config(path: Path = CONFIG_PATH) -> Config:
+    """Read the monitor settings from a JSON config file."""
+    raw = json.loads(path.read_text())
+    return Config(
+        template=Path(raw["prompt"]).name,
+        reasoning=raw["reasoning"],
+        max_tokens=raw["max_tokens"],
+        temperature=raw.get("temperature"),
+        model=raw["model"],
+        scale=raw["scale"]["max"],
+    )
 
 
 VARIANTS = {
@@ -84,8 +106,12 @@ def parse_probability(text: str, scale: int) -> tuple[int | None, str | None]:
     return score, reason if isinstance(reason, str) else None
 
 
-def make_post(api_key: str) -> Post:
-    """Return a function that posts one chat completion to OpenRouter."""
+def make_post(
+    api_key: str,
+    opener: Callable = urllib.request.urlopen,
+    sleep: Callable = time.sleep,
+) -> Post:
+    """Return a function that posts to OpenRouter, retrying with exponential backoff."""
 
     def post(payload: dict) -> dict:
         req = urllib.request.Request(
@@ -93,8 +119,19 @@ def make_post(api_key: str) -> Post:
             data=json.dumps(payload).encode(),
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
         )
-        with urllib.request.urlopen(req, timeout=90) as resp:  # noqa: S310
-            return json.load(resp)
+        for attempt in range(ATTEMPTS):
+            try:
+                with opener(req, timeout=90) as resp:
+                    return json.load(resp)
+            except urllib.error.HTTPError as exc:
+                if exc.code not in RETRY_CODES or attempt == ATTEMPTS - 1:
+                    raise
+            except (urllib.error.URLError, TimeoutError):
+                if attempt == ATTEMPTS - 1:
+                    raise
+            sleep(BASE_DELAY_S * 2**attempt)
+        msg = "unreachable"
+        raise RuntimeError(msg)
 
     return post
 
@@ -108,7 +145,7 @@ def monitor_call(
     """Call the monitor, retrying once on a parse failure or transport error."""
     result = MonitorResult(None, None, parse_ok=False, retried=False)
     payload = {
-        "model": MODEL,
+        "model": cfg.model,
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": cfg.max_tokens,
         "reasoning": cfg.reasoning,

@@ -1,5 +1,11 @@
 """Tests for sprint2p2.monitor using a fake network."""
 
+import json
+import urllib.error
+from typing import Self
+
+import pytest
+
 from sprint2p2 import monitor
 
 SCALE = 100
@@ -105,3 +111,72 @@ def test_v2_payload() -> None:
     assert seen[0]["reasoning"] == {"max_tokens": 1024}
     assert seen[0]["max_tokens"] == 1500  # noqa: PLR2004
     assert "temperature" not in seen[0]
+
+
+class FakeResponse:
+    """Minimal context-manager response for the fake opener."""
+
+    def __init__(self, body: dict) -> None:
+        """Hold the JSON body."""
+        self.body = json.dumps(body).encode()
+
+    def __enter__(self) -> Self:
+        """Enter the context."""
+        return self
+
+    def __exit__(self, *_exc: object) -> None:
+        """Leave the context."""
+
+    def read(self) -> bytes:
+        """Return the body bytes."""
+        return self.body
+
+
+def http_error(code: int) -> urllib.error.HTTPError:
+    """Build an HTTPError with the given status."""
+    return urllib.error.HTTPError("u", code, "m", {}, None)  # type: ignore[arg-type]
+
+
+def test_backoff_retries_then_succeeds() -> None:
+    """Two 429s then success sleeps 1s then 2s."""
+    outcomes = [http_error(429), http_error(503), FakeResponse({"ok": 1})]
+    sleeps: list[float] = []
+
+    def opener(_req: object, timeout: int) -> FakeResponse:  # noqa: ARG001
+        out = outcomes.pop(0)
+        if isinstance(out, Exception):
+            raise out
+        return out
+
+    post = monitor.make_post("k", opener, sleeps.append)
+    assert post({}) == {"ok": 1}
+    assert sleeps == [1.0, 2.0]
+
+
+def test_backoff_gives_up_and_skips_non_retryable() -> None:
+    """A 400 is raised at once; repeated 429s raise after the last attempt."""
+    sleeps: list[float] = []
+
+    def bad_request(_req: object, timeout: int) -> None:  # noqa: ARG001
+        raise http_error(400)
+
+    with pytest.raises(urllib.error.HTTPError):
+        monitor.make_post("k", bad_request, sleeps.append)({})
+    assert sleeps == []
+
+    def always_429(_req: object, timeout: int) -> None:  # noqa: ARG001
+        raise http_error(429)
+
+    with pytest.raises(urllib.error.HTTPError):
+        monitor.make_post("k", always_429, sleeps.append)({})
+    assert sleeps == [1.0, 2.0, 4.0, 8.0]
+
+
+def test_load_config() -> None:
+    """configs/monitor.json is the v2 setting."""
+    cfg = monitor.load_config()
+    assert cfg.model == "anthropic/claude-haiku-5.5"
+    assert cfg.template == "monitor_prompt_v1.txt"
+    assert (cfg.scale, cfg.max_tokens, cfg.temperature) == (100, 1500, None)
+    assert cfg.reasoning == {"max_tokens": 1024}
+    assert cfg == monitor.VARIANTS["v2"]
