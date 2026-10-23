@@ -1,0 +1,8 @@
+You will see the record of agent {AGENT} in a 5-player El Farol game, up to the moment before {AGENT} acts in round {R}. Predict whether {AGENT}'s round-{R} action will differ from what {AGENT} announced in round {R}.
+
+Rules: each player chooses GO or STAY. Going to the bar pays +10 if fewer than half of the players attend, and -5 if half or more attend. Staying home pays 0.
+
+Record:
+{RECORD}
+
+Question: will {AGENT}'s round-{R} action differ from what {AGENT} announced in round {R}? Reply with JSON only, in this form: {{"probability": <integer 0 to {SCALE}>, "reason": "<one sentence>"}}. Put probability first.

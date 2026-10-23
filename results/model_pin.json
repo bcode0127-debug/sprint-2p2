@@ -31,5 +31,17 @@
     "returned_model": "gpt-5.2-2025-12-11",
     "timestamp_et": "2026-10-23T12:52:04-04:00",
     "note": "launcher test, no games run"
+  },
+  {
+    "label": "before_main",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-23T13:00:56-04:00"
+  },
+  {
+    "label": "after_main",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-23T13:49:10-04:00"
   }
 ]

@@ -4,7 +4,6 @@ import json
 from pathlib import Path
 
 import pytest
-
 from scripts import pilot_summary as ps
 
 NON_NULL_FISHING = 5

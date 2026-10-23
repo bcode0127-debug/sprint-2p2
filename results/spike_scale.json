@@ -1,0 +1,2025 @@
+{
+  "source": "pilot file, rounds 1 to 9",
+  "seed": 7,
+  "n_cases": 60,
+  "per_scale": {
+    "100": {
+      "distinct_values": 16,
+      "largest_tie_group": {
+        "value": 8,
+        "count": 13,
+        "share": 0.21666666666666667
+      },
+      "parse_failures": 0,
+      "auroc": 0.47888888888888886
+    },
+    "1000": {
+      "distinct_values": 17,
+      "largest_tie_group": {
+        "value": 80,
+        "count": 11,
+        "share": 0.18333333333333332
+      },
+      "parse_failures": 0,
+      "auroc": 0.49166666666666664
+    }
+  },
+  "total_tokens": {
+    "prompt": 204476,
+    "completion": 12737
+  },
+  "reasoning_param": {
+    "enabled": false
+  },
+  "total_reasoning_tokens": 0,
+  "returned_models": [
+    "anthropic/claude-haiku-5.5"
+  ],
+  "estimated_cost_usd": 0.0268161,
+  "pricing_per_token": {
+    "prompt": 1e-07,
+    "completion": 5e-07
+  },
+  "cases": [
+    {
+      "trial": 0,
+      "round": 8,
+      "agent": "Q",
+      "label": true,
+      "id": [
+        0,
+        8,
+        "Q"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2263,
+        "completion": 103
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 150,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2264,
+        "completion": 95
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 7,
+      "agent": "J",
+      "label": true,
+      "id": [
+        0,
+        7,
+        "J"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2113,
+        "completion": 73
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 90,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2114,
+        "completion": 97
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 2,
+      "agent": "J",
+      "label": false,
+      "id": [
+        1,
+        2,
+        "J"
+      ],
+      "score_100": 25,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 992,
+        "completion": 104
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 180,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 993,
+        "completion": 138
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 7,
+      "agent": "T",
+      "label": true,
+      "id": [
+        1,
+        7,
+        "T"
+      ],
+      "score_100": 6,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1899,
+        "completion": 72
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 40,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1900,
+        "completion": 103
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 3,
+      "agent": "Z",
+      "label": true,
+      "id": [
+        0,
+        3,
+        "Z"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1515,
+        "completion": 101
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 380,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1516,
+        "completion": 106
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 3,
+      "agent": "M",
+      "label": false,
+      "id": [
+        0,
+        3,
+        "M"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1479,
+        "completion": 105
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 550,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1480,
+        "completion": 111
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 8,
+      "agent": "T",
+      "label": true,
+      "id": [
+        1,
+        8,
+        "T"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2280,
+        "completion": 106
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 310,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2281,
+        "completion": 132
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 4,
+      "agent": "Z",
+      "label": true,
+      "id": [
+        2,
+        4,
+        "Z"
+      ],
+      "score_100": 6,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1451,
+        "completion": 75
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1452,
+        "completion": 76
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 9,
+      "agent": "M",
+      "label": false,
+      "id": [
+        2,
+        9,
+        "M"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2261,
+        "completion": 92
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2262,
+        "completion": 128
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 9,
+      "agent": "J",
+      "label": true,
+      "id": [
+        1,
+        9,
+        "J"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2134,
+        "completion": 76
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2135,
+        "completion": 150
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 8,
+      "agent": "J",
+      "label": true,
+      "id": [
+        0,
+        8,
+        "J"
+      ],
+      "score_100": 18,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2066,
+        "completion": 114
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 130,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2067,
+        "completion": 107
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 6,
+      "agent": "J",
+      "label": false,
+      "id": [
+        1,
+        6,
+        "J"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1634,
+        "completion": 93
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 120,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1635,
+        "completion": 110
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 2,
+      "agent": "T",
+      "label": false,
+      "id": [
+        1,
+        2,
+        "T"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1106,
+        "completion": 113
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1107,
+        "completion": 150
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 3,
+      "agent": "Z",
+      "label": false,
+      "id": [
+        2,
+        3,
+        "Z"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1407,
+        "completion": 122
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 350,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1408,
+        "completion": 118
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 2,
+      "agent": "Q",
+      "label": false,
+      "id": [
+        1,
+        2,
+        "Q"
+      ],
+      "score_100": 6,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1027,
+        "completion": 77
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 40,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1028,
+        "completion": 103
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 9,
+      "agent": "Q",
+      "label": true,
+      "id": [
+        2,
+        9,
+        "Q"
+      ],
+      "score_100": 25,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2420,
+        "completion": 124
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 280,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2421,
+        "completion": 90
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 4,
+      "agent": "Q",
+      "label": false,
+      "id": [
+        0,
+        4,
+        "Q"
+      ],
+      "score_100": 4,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1597,
+        "completion": 75
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 60,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1598,
+        "completion": 124
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 2,
+      "agent": "M",
+      "label": true,
+      "id": [
+        0,
+        2,
+        "M"
+      ],
+      "score_100": 15,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1196,
+        "completion": 121
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 180,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1197,
+        "completion": 110
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 1,
+      "agent": "Z",
+      "label": true,
+      "id": [
+        2,
+        1,
+        "Z"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1003,
+        "completion": 108
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 420,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1004,
+        "completion": 106
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 8,
+      "agent": "Z",
+      "label": false,
+      "id": [
+        0,
+        8,
+        "Z"
+      ],
+      "score_100": 60,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2332,
+        "completion": 91
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 620,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2333,
+        "completion": 91
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 7,
+      "agent": "Q",
+      "label": false,
+      "id": [
+        0,
+        7,
+        "Q"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2299,
+        "completion": 124
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 180,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2300,
+        "completion": 92
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 3,
+      "agent": "J",
+      "label": false,
+      "id": [
+        0,
+        3,
+        "J"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1423,
+        "completion": 120
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 120,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1424,
+        "completion": 105
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 5,
+      "agent": "J",
+      "label": true,
+      "id": [
+        1,
+        5,
+        "J"
+      ],
+      "score_100": 22,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1633,
+        "completion": 93
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 300,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1634,
+        "completion": 132
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 4,
+      "agent": "Q",
+      "label": true,
+      "id": [
+        1,
+        4,
+        "Q"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1529,
+        "completion": 109
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 350,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1530,
+        "completion": 118
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 4,
+      "agent": "M",
+      "label": false,
+      "id": [
+        1,
+        4,
+        "M"
+      ],
+      "score_100": 20,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1492,
+        "completion": 150
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 380,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1493,
+        "completion": 105
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 6,
+      "agent": "Z",
+      "label": false,
+      "id": [
+        0,
+        6,
+        "Z"
+      ],
+      "score_100": 60,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2055,
+        "completion": 99
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 620,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2056,
+        "completion": 101
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 9,
+      "agent": "M",
+      "label": true,
+      "id": [
+        1,
+        9,
+        "M"
+      ],
+      "score_100": 6,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2387,
+        "completion": 98
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2388,
+        "completion": 150
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 9,
+      "agent": "Q",
+      "label": true,
+      "id": [
+        1,
+        9,
+        "Q"
+      ],
+      "score_100": 4,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2491,
+        "completion": 100
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 60,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2492,
+        "completion": 130
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 6,
+      "agent": "M",
+      "label": false,
+      "id": [
+        2,
+        6,
+        "M"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1878,
+        "completion": 94
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1879,
+        "completion": 93
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 5,
+      "agent": "Z",
+      "label": false,
+      "id": [
+        1,
+        5,
+        "Z"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1829,
+        "completion": 92
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 150,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1830,
+        "completion": 112
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 9,
+      "agent": "M",
+      "label": false,
+      "id": [
+        0,
+        9,
+        "M"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2529,
+        "completion": 100
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 280,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2530,
+        "completion": 110
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 1,
+      "agent": "J",
+      "label": true,
+      "id": [
+        2,
+        1,
+        "J"
+      ],
+      "score_100": 40,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 916,
+        "completion": 99
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 380,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 917,
+        "completion": 127
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 7,
+      "agent": "J",
+      "label": false,
+      "id": [
+        1,
+        7,
+        "J"
+      ],
+      "score_100": 5,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1711,
+        "completion": 150
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 180,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1712,
+        "completion": 122
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 7,
+      "agent": "Z",
+      "label": false,
+      "id": [
+        2,
+        7,
+        "Z"
+      ],
+      "score_100": 22,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2192,
+        "completion": 113
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 180,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2193,
+        "completion": 115
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 7,
+      "agent": "Z",
+      "label": true,
+      "id": [
+        1,
+        7,
+        "Z"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1906,
+        "completion": 71
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 50,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1907,
+        "completion": 122
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 3,
+      "agent": "T",
+      "label": false,
+      "id": [
+        2,
+        3,
+        "T"
+      ],
+      "score_100": 4,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1419,
+        "completion": 62
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 40,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1420,
+        "completion": 90
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 1,
+      "agent": "Z",
+      "label": true,
+      "id": [
+        0,
+        1,
+        "Z"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1014,
+        "completion": 69
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1015,
+        "completion": 112
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 8,
+      "agent": "T",
+      "label": true,
+      "id": [
+        0,
+        8,
+        "T"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2411,
+        "completion": 102
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 120,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2412,
+        "completion": 111
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 3,
+      "agent": "Q",
+      "label": false,
+      "id": [
+        2,
+        3,
+        "Q"
+      ],
+      "score_100": 55,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1439,
+        "completion": 124
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 620,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1440,
+        "completion": 114
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 4,
+      "agent": "T",
+      "label": true,
+      "id": [
+        2,
+        4,
+        "T"
+      ],
+      "score_100": 5,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1382,
+        "completion": 76
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 40,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1383,
+        "completion": 91
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 5,
+      "agent": "T",
+      "label": true,
+      "id": [
+        0,
+        5,
+        "T"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1763,
+        "completion": 63
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 40,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1764,
+        "completion": 76
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 4,
+      "agent": "Z",
+      "label": false,
+      "id": [
+        0,
+        4,
+        "Z"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1610,
+        "completion": 110
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 280,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1611,
+        "completion": 127
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 7,
+      "agent": "M",
+      "label": true,
+      "id": [
+        0,
+        7,
+        "M"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2236,
+        "completion": 118
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 150,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2237,
+        "completion": 129
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 9,
+      "agent": "T",
+      "label": true,
+      "id": [
+        1,
+        9,
+        "T"
+      ],
+      "score_100": 20,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2333,
+        "completion": 139
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 150,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2334,
+        "completion": 86
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 1,
+      "agent": "M",
+      "label": true,
+      "id": [
+        0,
+        1,
+        "M"
+      ],
+      "score_100": 25,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 986,
+        "completion": 139
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 180,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 987,
+        "completion": 98
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 2,
+      "agent": "T",
+      "label": false,
+      "id": [
+        0,
+        2,
+        "T"
+      ],
+      "score_100": 10,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1289,
+        "completion": 76
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1290,
+        "completion": 143
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 5,
+      "agent": "M",
+      "label": false,
+      "id": [
+        0,
+        5,
+        "M"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1704,
+        "completion": 91
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 180,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1705,
+        "completion": 92
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 2,
+      "agent": "T",
+      "label": false,
+      "id": [
+        2,
+        2,
+        "T"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1147,
+        "completion": 79
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1148,
+        "completion": 113
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 5,
+      "agent": "Q",
+      "label": false,
+      "id": [
+        0,
+        5,
+        "Q"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1751,
+        "completion": 80
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 40,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1752,
+        "completion": 100
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 1,
+      "agent": "M",
+      "label": true,
+      "id": [
+        2,
+        1,
+        "M"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 961,
+        "completion": 136
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 380,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 962,
+        "completion": 125
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 8,
+      "agent": "Q",
+      "label": false,
+      "id": [
+        1,
+        8,
+        "Q"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2404,
+        "completion": 97
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 150,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2405,
+        "completion": 82
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 4,
+      "agent": "M",
+      "label": false,
+      "id": [
+        0,
+        4,
+        "M"
+      ],
+      "score_100": 15,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1551,
+        "completion": 80
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 150,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1552,
+        "completion": 76
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 4,
+      "agent": "J",
+      "label": false,
+      "id": [
+        2,
+        4,
+        "J"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1347,
+        "completion": 126
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 60,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1348,
+        "completion": 135
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 7,
+      "agent": "M",
+      "label": true,
+      "id": [
+        1,
+        7,
+        "M"
+      ],
+      "score_100": 12,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1882,
+        "completion": 150
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 180,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1883,
+        "completion": 130
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 3,
+      "agent": "M",
+      "label": false,
+      "id": [
+        2,
+        3,
+        "M"
+      ],
+      "score_100": 22,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1399,
+        "completion": 137
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 350,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1400,
+        "completion": 122
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 1,
+      "round": 3,
+      "agent": "Q",
+      "label": true,
+      "id": [
+        1,
+        3,
+        "Q"
+      ],
+      "score_100": 30,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1212,
+        "completion": 114
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 350,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1213,
+        "completion": 103
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 3,
+      "agent": "J",
+      "label": true,
+      "id": [
+        2,
+        3,
+        "J"
+      ],
+      "score_100": 35,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1320,
+        "completion": 140
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 380,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1321,
+        "completion": 111
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 5,
+      "agent": "T",
+      "label": true,
+      "id": [
+        2,
+        5,
+        "T"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1656,
+        "completion": 71
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 120,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1657,
+        "completion": 115
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 0,
+      "round": 7,
+      "agent": "T",
+      "label": true,
+      "id": [
+        0,
+        7,
+        "T"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 2369,
+        "completion": 68
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 2370,
+        "completion": 113
+      },
+      "reasoning_tokens_1000": 0
+    },
+    {
+      "trial": 2,
+      "round": 2,
+      "agent": "Z",
+      "label": false,
+      "id": [
+        2,
+        2,
+        "Z"
+      ],
+      "score_100": 8,
+      "parse_ok_100": true,
+      "retried_100": false,
+      "models_100": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_100": {
+        "prompt": 1178,
+        "completion": 81
+      },
+      "reasoning_tokens_100": 0,
+      "score_1000": 80,
+      "parse_ok_1000": true,
+      "retried_1000": false,
+      "models_1000": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens_1000": {
+        "prompt": 1179,
+        "completion": 79
+      },
+      "reasoning_tokens_1000": 0
+    }
+  ]
+}

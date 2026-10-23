@@ -1,6 +1,7 @@
 [tool.ruff]
 line-length = 100
 exclude = ["harness"]
+src = ["src"]
 
 [tool.ruff.lint]
 select = ["ALL"]
@@ -11,3 +12,4 @@ ignore = ["D203", "D213", "COM812", "ISC001", "CPY001"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src", "."]
