@@ -2,6 +2,10 @@
 
 A pre-registered test of whether announcements help an LLM monitor predict that an agent will break them, in El Farol and in a Fishing transfer game.
 
+## About
+
+Submission to the AI Collusion Research Sprint run by Apart Research (https://apartresearch.com/sprints/ai-collusion-research-sprint-2026-10-23-to-2026-10-25), October 23 to 25, 2026: track 2, question 2.2. Author: Ajay Jamanjyothi, independent researcher. Code and analysis were written during the sprint (first commit October 23); the design was planned from October 20. The game harness is pre-existing (see New versus pre-existing).
+
 ## Question
 
 When GPT-5.2 agents play a repeated El Farol game and announce what they will do before choosing,
@@ -35,6 +39,23 @@ Combination with the counting rule, replication only ([results/tables/replicatio
 ![AUROC by view with 95% game-bootstrap intervals](results/figures/figure1_auroc_by_view.png)
 
 Figure 1 values: [results/figures/figure_data.json](results/figures/figure_data.json), read from the three tables.json files above. The figures and `results/report_tables.md` are built by `scripts/make_figures.py`.
+
+## Practice run and future work (development only, not registered)
+
+Same 585 development cases, prompt v1, 1,024 reasoning tokens; exploratory and optimistic because these cases were already seen. Source: [results/practice_monitors_dev.md](results/practice_monitors_dev.md) (and `.json`).
+
+- Both view AUROC: Gemini 3.8 Flash 0.666, Claude Sonnet 5.5 0.629, Claude Haiku 5.5 0.607 and 0.625 (two runs). Messages-only: Gemini 0.705, Haiku 0.625.
+- Spearman correlation with Haiku on Both: Gemini 0.60, Sonnet 0.77.
+- Rank average of Haiku and Gemini: 0.652, below Gemini alone. Gemini plus the counting rule: 0.693.
+
+Reproduce: `PYTHONPATH=src .venv/bin/python -m scripts.analyze_practice` (no API call, but it needs the cache `~/apart-sprint/docs/run-logs/retest_run2.jsonl`, which is outside the repo).
+
+Next steps:
+
+- A registered cross-family test on fresh games.
+- Direction-aware monitors.
+- Calibration that carries across environments.
+- Settings where no one-line rule exists.
 
 ## Pre-registration
 
