@@ -107,7 +107,14 @@ Only figures that a committed file records. Monitor tokens for the Both view, fr
 | El Farol test | 1,561,001 | 352,591 | 279,494 | [results/tables/final/tables.json](results/tables/final/tables.json) |
 | El Farol replication | 1,520,164 | 344,327 | 270,796 | [results/tables/replication/tables.json](results/tables/replication/tables.json) |
 
-Monitor dollar cost and Fishing tokens: TODO(Zay). The harness does not log agent token usage, so agent cost is not recorded.
+Whole-project API cost, read from the provider dashboards on October 24, 2026
+(pilot, development, practice, test, replication and Fishing):
+
+- Agents (OpenAI, GPT-5.2): $103.18, 37,535 requests, 35.0M tokens, all on October 23 and 24.
+- Monitor (OpenRouter): $17.16, about 38k requests, 49.4M tokens.
+- Total: $120.34.
+
+The harness does not log agent token usage, so these figures come from the dashboards, not from committed files.
 
 ## Known issue
 
@@ -116,4 +123,4 @@ Fix: commit `575d537` (`scripts/freeze.py` now clears git's structural variables
 
 ## Report
 
-Report: TODO(Zay) link after submission
+Report: link added after submission.
