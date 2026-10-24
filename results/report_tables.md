@@ -14,7 +14,7 @@ Both minus Actions-only by run. Breaks are positive cases (Fishing: any change f
 
 ## Table 2
 
-Both minus the comparison view (S1 Own-only, S2 Freshness, S3 counting rule) and Both minus the combination (C1, C2). Holm p-values are the stored ones.
+S1 to S3 are Both minus the named view (S1 Own-only, S2 Freshness, S3 counting rule). C1 is the combination minus Both; C2 is the combination minus the counting rule. Holm p-values are the stored ones.
 
 | Run | Contrast | Difference | One-sided 5th percentile | Holm p |
 |---|---|---|---|---|
