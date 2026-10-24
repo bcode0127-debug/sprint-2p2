@@ -140,3 +140,29 @@ def test_replication_split_selects_only_the_rep_log() -> None:
     assert {c["trial"] for c in cases} == {0, 1, 2, 3}
     assert {c["round"] for c in cases} == {1, 2}
     assert {c["split"] for c in cases} == {"replication"}
+
+
+def test_fishing_test_needs_amendment_url(tmp_path: Path) -> None:
+    """fishing_test is refused while amendment1_url is empty or missing, like replication."""
+    base = {**GOOD, "thresholds": THRESHOLDS}
+    for body in (GOOD, base, {**base, "amendment1_url": ""}, {**base, "amendment1_url": "  "}):
+        with pytest.raises(splits.GateError):
+            splits.check_gate("fishing_test", write_frozen(tmp_path / "f.json", body))
+    with pytest.raises(splits.GateError):
+        splits.check_gate("fishing_test", tmp_path / "absent.json")
+    ok = write_frozen(tmp_path / "ok.json", {**base, "amendment1_url": "https://osf.io/amend"})
+    splits.check_gate("fishing_test", ok)
+
+
+def test_fishing_test_sources_are_gated_and_dev_sources_are_not(tmp_path: Path) -> None:
+    """Games fishtestA and fishtestB are gated by source; fishpilot and the Oct 23 pilot are not."""
+    absent = tmp_path / "absent.json"
+    for source in splits.FISHING_TEST_SOURCES:
+        for declared in ("fishing_test", "dev"):
+            with pytest.raises(splits.GateError):
+                splits.guard_case({"source": source, "trial": 3, "split": declared}, absent)
+    for source in splits.FISHING_DEV_SOURCES:
+        splits.guard_case({"source": source, "trial": 0, "split": "fishing_dev"}, absent)
+    full = {**GOOD, "thresholds": THRESHOLDS, "amendment1_url": "https://x"}
+    ok = write_frozen(tmp_path / "ok.json", full)
+    splits.guard_case({"source": "fishtestB", "trial": 5, "split": "fishing_test"}, ok)
