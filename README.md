@@ -43,7 +43,7 @@ The analysis plan is `docs/preregistration.md` (v2, DRAFT, NOT FROZEN). The prim
 paired AUROC difference Both minus Actions-only on the test split, one-sided, with a bootstrap over
 whole games. S1 to S3 and the deployment reading (recall at 10% FPR) are secondary. The freeze
 record will be `configs/frozen.json`; the OSF link goes here once the registration exists:
-OSF: not yet registered.
+OSF: https://osf.io/buxrm
 
 ## Data and gate
 
