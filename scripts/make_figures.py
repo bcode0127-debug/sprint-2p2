@@ -284,10 +284,9 @@ def render_tables(data: dict) -> str:
         "and extras.json. Registered results only.\n\n"
         "## Table 1\n\nBoth minus Actions-only by run. Breaks are positive cases (Fishing: any "
         "change from the announcement).\n\n" + "\n".join(t1) + "\n\n## Table 2\n\n"
-        "Both minus the comparison view (S1 Own-only, S2 Freshness, S3 counting rule) and Both "
-        "minus the combination (C1, C2). Holm p-values are the stored ones.\n\n"
-        + "\n".join(t2)
-        + "\n"
+        "S1 to S3 are Both minus the named view (S1 Own-only, S2 Freshness, S3 counting rule). "
+        "C1 is the combination minus Both; C2 is the combination minus the counting rule. "
+        "Holm p-values are the stored ones.\n\n" + "\n".join(t2) + "\n"
     )
 
 
@@ -343,7 +342,7 @@ def fig2(data: dict, stem: Path) -> None:
     ticks, labels = [], []
     y = 0.0
     for key, name in reversed(DIRECTIONS):
-        for m, mname in METHODS:
+        for m, mname in reversed(METHODS):
             interval(ax, y, data["figure2"][key][m], colors[m], markers[m])
             ticks.append(y)
             labels.append(mname)
