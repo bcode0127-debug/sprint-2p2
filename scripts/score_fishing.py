@@ -43,7 +43,7 @@ def main(argv: list[str] | None = None) -> None:
     names = [v for v in args.views.split(",") if v]
     key = read_key()
     usage = budget.get_usage(key)
-    estimate = budget.check_budget(usage, len(cases) * len(names))
+    estimate = budget.check_budget(usage, len(cases) * len(names), budget.spend_cap(key))
     print(f"usage before: {usage:.4f} USD, estimated this run: {estimate:.2f} USD")  # noqa: T201
     runner = scoring.Runner(logs, monitor.load_config(CONFIG), monitor.make_post(key))
     workers = json.loads(CONFIG.read_text())["concurrency"]

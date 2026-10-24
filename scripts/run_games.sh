@@ -13,6 +13,8 @@ set -euo pipefail
 PROJ="$(cd "$(dirname "$0")/.." && pwd)"
 PY="$PROJ/.venv/bin/python"
 LOGDIR="$HOME/apart-sprint/docs/run-logs"
+# HARNESS_OUT_ROOT overrides where output files are looked for (the overwrite guard); used by tests.
+OUT_ROOT="${HARNESS_OUT_ROOT:-$PROJ/harness/outputs/experiments}"
 
 usage() {
   echo "usage: $0 N_ELFAROL N_FISHING [SUFFIX_ELFAROL] [SUFFIX_FISHING]" >&2
@@ -21,7 +23,7 @@ usage() {
 }
 
 out_path() {
-  echo "$PROJ/harness/outputs/experiments/$1/5agents/gpt-5.2_endogenous_$2.json"
+  echo "$OUT_ROOT/$1/5agents/gpt-5.2_endogenous_$2.json"
 }
 
 refuse_overwrite() {

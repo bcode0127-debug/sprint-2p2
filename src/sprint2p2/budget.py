@@ -12,11 +12,21 @@ class BudgetError(RuntimeError):
     """Raised when a run would push key usage past the cap."""
 
 
-def get_usage(api_key: str) -> float:
-    """Return the key's cumulative usage in USD from GET /api/v1/key."""
+def get_key_data(api_key: str) -> dict:
+    """Return the data block of GET /api/v1/key (usage and limit, in USD)."""
     req = urllib.request.Request(KEY_URL, headers={"Authorization": f"Bearer {api_key}"})
     with urllib.request.urlopen(req, timeout=30) as resp:  # noqa: S310
-        return float(json.load(resp)["data"]["usage"])
+        return json.load(resp)["data"]
+
+
+def get_usage(api_key: str) -> float:
+    """Return the key's cumulative usage in USD from GET /api/v1/key."""
+    return float(get_key_data(api_key)["usage"])
+
+
+def spend_cap(api_key: str, reserve: float = 1.0) -> float:
+    """Return the key's own limit minus a reserve, for keys whose limit was raised."""
+    return float(get_key_data(api_key)["limit"]) - reserve
 
 
 def check_budget(usage: float, n_calls: int, cap: float = CAP_USD) -> float:

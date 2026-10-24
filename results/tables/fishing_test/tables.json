@@ -1,0 +1,506 @@
+{
+  "controls": {
+    "empty": {
+      "auroc": 0.477681,
+      "pass": true
+    },
+    "oracle": {
+      "auroc": 0.999938,
+      "pass": true,
+      "recall": 1.0
+    }
+  },
+  "label_a_any_change": {
+    "both_minus_actions_only": {
+      "descriptive_two_sided_ci95": [
+        0.064346,
+        0.166222
+      ],
+      "diff": 0.113932,
+      "lower_95_one_sided": 0.072255,
+      "mean_of_per_game_differences": 0.140739,
+      "n_games": 40,
+      "n_games_used": 40,
+      "n_negative": 647,
+      "n_positive": 1153,
+      "n_resamples": 10000,
+      "p_one_sided": 0.0001,
+      "per_game_differences": {
+        "fishtestA:0": 0.092,
+        "fishtestA:1": 0.115079,
+        "fishtestA:10": 0.156883,
+        "fishtestA:11": 0.265182,
+        "fishtestA:12": 0.212406,
+        "fishtestA:13": 0.006912,
+        "fishtestA:14": 0.307613,
+        "fishtestA:15": 0.104278,
+        "fishtestA:16": 0.224308,
+        "fishtestA:17": 0.076014,
+        "fishtestA:18": 0.312222,
+        "fishtestA:19": 0.420635,
+        "fishtestA:2": 0.161616,
+        "fishtestA:3": 0.491071,
+        "fishtestA:4": 0.017857,
+        "fishtestA:5": -0.007143,
+        "fishtestA:6": 0.177802,
+        "fishtestA:7": 0.150922,
+        "fishtestA:8": 0.047297,
+        "fishtestA:9": 0.25,
+        "fishtestB:0": 0.314904,
+        "fishtestB:1": -0.025253,
+        "fishtestB:10": -0.191729,
+        "fishtestB:11": 0.004,
+        "fishtestB:12": -0.012857,
+        "fishtestB:13": 0.198276,
+        "fishtestB:14": 0.177984,
+        "fishtestB:15": 0.268939,
+        "fishtestB:16": -0.109244,
+        "fishtestB:17": 0.229938,
+        "fishtestB:18": -0.12,
+        "fishtestB:19": 0.211538,
+        "fishtestB:2": 0.21,
+        "fishtestB:3": 0.269231,
+        "fishtestB:4": -0.063241,
+        "fishtestB:5": 0.229938,
+        "fishtestB:6": 0.294118,
+        "fishtestB:7": 0.08,
+        "fishtestB:8": 0.077068,
+        "fishtestB:9": 0.002976
+      },
+      "success": true
+    },
+    "both_vs_0.5": {
+      "descriptive_two_sided_ci95": [
+        0.111015,
+        0.188928
+      ],
+      "diff": 0.149901,
+      "lower_95_one_sided": 0.117128,
+      "mean_of_per_game_differences": 0.145399,
+      "n_games": 40,
+      "n_games_used": 40,
+      "n_negative": 647,
+      "n_positive": 1153,
+      "n_resamples": 10000,
+      "p_one_sided": 0.0001,
+      "per_game_differences": {
+        "fishtestA:0": 0.018,
+        "fishtestA:1": 0.212302,
+        "fishtestA:10": 0.267206,
+        "fishtestA:11": 0.186235,
+        "fishtestA:12": 0.073308,
+        "fishtestA:13": 0.190092,
+        "fishtestA:14": 0.192387,
+        "fishtestA:15": 0.148396,
+        "fishtestA:16": 0.185771,
+        "fishtestA:17": 0.030405,
+        "fishtestA:18": 0.19,
+        "fishtestA:19": 0.319444,
+        "fishtestA:2": 0.156566,
+        "fishtestA:3": 0.372024,
+        "fishtestA:4": 0.03373,
+        "fishtestA:5": 0.134286,
+        "fishtestA:6": 0.262931,
+        "fishtestA:7": 0.069124,
+        "fishtestA:8": 0.037162,
+        "fishtestA:9": 0.235714,
+        "fishtestB:0": 0.228365,
+        "fishtestB:1": 0.167929,
+        "fishtestB:10": -0.265038,
+        "fishtestB:11": -0.053,
+        "fishtestB:12": 0.08,
+        "fishtestB:13": 0.243534,
+        "fishtestB:14": 0.187243,
+        "fishtestB:15": 0.285354,
+        "fishtestB:16": -0.00105,
+        "fishtestB:17": 0.148148,
+        "fishtestB:18": 0.015,
+        "fishtestB:19": 0.180162,
+        "fishtestB:2": 0.18,
+        "fishtestB:3": 0.17094,
+        "fishtestB:4": -0.034585,
+        "fishtestB:5": 0.311728,
+        "fishtestB:6": 0.358289,
+        "fishtestB:7": 0.177,
+        "fishtestB:8": 0.12782,
+        "fishtestB:9": -0.006944
+      },
+      "success": true
+    },
+    "counts": {
+      "n_negative": 647,
+      "n_positive": 1153
+    },
+    "deployment": {
+      "actions_only": {
+        "fpr_achieved": 0.437403,
+        "frozen_fit": {
+          "fpr_target": 0.1,
+          "q": 0.088,
+          "t": 15.0
+        },
+        "n_negative": 647,
+        "n_positive": 1153,
+        "recall": 0.486557,
+        "recall_lower_95_one_sided": 0.446863
+      },
+      "both": {
+        "fpr_achieved": 0.256569,
+        "frozen_fit": {
+          "fpr_target": 0.1,
+          "q": 0.45,
+          "t": 60.0
+        },
+        "n_negative": 647,
+        "n_positive": 1153,
+        "recall": 0.413703,
+        "recall_lower_95_one_sided": 0.367232
+      }
+    },
+    "rules": {
+      "R1": {
+        "auroc": 0.567786,
+        "auroc_ci95": [
+          0.534183,
+          0.598405
+        ],
+        "n_negative": 647,
+        "n_positive": 1153
+      },
+      "R12": {
+        "auroc": 0.592639,
+        "auroc_ci95": [
+          0.552422,
+          0.626549
+        ],
+        "n_negative": 647,
+        "n_positive": 1153
+      },
+      "R2": {
+        "auroc": 0.593356,
+        "auroc_ci95": [
+          0.55366,
+          0.626144
+        ],
+        "n_negative": 647,
+        "n_positive": 1153
+      },
+      "R3": {
+        "auroc": 0.344606,
+        "auroc_ci95": [
+          0.315293,
+          0.379988
+        ],
+        "n_negative": 647,
+        "n_positive": 1153
+      }
+    },
+    "scorers": {
+      "actions_only": {
+        "auroc": 0.53597,
+        "auroc_ci95": [
+          0.505847,
+          0.563993
+        ],
+        "n_negative": 647,
+        "n_positive": 1153
+      },
+      "both": {
+        "auroc": 0.649901,
+        "auroc_ci95": [
+          0.611015,
+          0.688928
+        ],
+        "n_negative": 647,
+        "n_positive": 1153
+      },
+      "empty": {
+        "auroc": 0.477681,
+        "auroc_ci95": [
+          0.453592,
+          0.501146
+        ],
+        "n_negative": 647,
+        "n_positive": 1153
+      },
+      "oracle": {
+        "auroc": 0.999938,
+        "auroc_ci95": [
+          0.999843,
+          0.999993
+        ],
+        "n_negative": 647,
+        "n_positive": 1153
+      }
+    }
+  },
+  "label_b_over_take_only": {
+    "both_minus_actions_only": {
+      "descriptive_two_sided_ci95": [
+        -0.211607,
+        -0.086113
+      ],
+      "diff": -0.149267,
+      "lower_95_one_sided": -0.201381,
+      "mean_of_per_game_differences": -0.068219,
+      "n_games": 40,
+      "n_games_used": 39,
+      "n_negative": 1105,
+      "n_positive": 695,
+      "n_resamples": 10000,
+      "p_one_sided": 1.0,
+      "per_game_differences": {
+        "fishtestA:0": 0.19,
+        "fishtestA:1": -0.3175,
+        "fishtestA:10": -0.545455,
+        "fishtestA:11": 0.024436,
+        "fishtestA:12": -0.070437,
+        "fishtestA:13": -0.42437,
+        "fishtestA:14": -0.155864,
+        "fishtestA:15": -0.088415,
+        "fishtestA:16": 0.262195,
+        "fishtestA:17": -0.145202,
+        "fishtestA:18": -0.026498,
+        "fishtestA:2": -0.056584,
+        "fishtestA:3": -0.136364,
+        "fishtestA:4": -0.478659,
+        "fishtestA:5": -0.007143,
+        "fishtestA:6": 0.14,
+        "fishtestA:7": 0.150922,
+        "fishtestA:8": 0.047297,
+        "fishtestA:9": 0.185185,
+        "fishtestB:0": 0.038866,
+        "fishtestB:1": -0.287716,
+        "fishtestB:10": -0.191729,
+        "fishtestB:11": -0.145722,
+        "fishtestB:12": -0.185556,
+        "fishtestB:13": 0.192227,
+        "fishtestB:14": -0.088235,
+        "fishtestB:15": 0.101,
+        "fishtestB:16": -0.147233,
+        "fishtestB:17": 0.229938,
+        "fishtestB:18": -0.30649,
+        "fishtestB:19": -0.1775,
+        "fishtestB:2": 0.131429,
+        "fishtestB:3": -0.07996,
+        "fishtestB:4": 0.262195,
+        "fishtestB:5": 0.072198,
+        "fishtestB:6": -0.12,
+        "fishtestB:7": 0.053333,
+        "fishtestB:8": -0.331984,
+        "fishtestB:9": -0.227163
+      },
+      "success": false
+    },
+    "both_vs_0.5": {
+      "descriptive_two_sided_ci95": [
+        -0.123384,
+        -0.020917
+      ],
+      "diff": -0.073062,
+      "lower_95_one_sided": -0.115165,
+      "mean_of_per_game_differences": -0.085973,
+      "n_games": 40,
+      "n_games_used": 39,
+      "n_negative": 1105,
+      "n_positive": 695,
+      "n_resamples": 10000,
+      "p_one_sided": 0.9957,
+      "per_game_differences": {
+        "fishtestA:0": 0.0275,
+        "fishtestA:1": -0.3425,
+        "fishtestA:10": -0.465909,
+        "fishtestA:11": -0.131579,
+        "fishtestA:12": -0.140873,
+        "fishtestA:13": -0.231092,
+        "fishtestA:14": -0.282407,
+        "fishtestA:15": -0.018293,
+        "fishtestA:16": 0.115854,
+        "fishtestA:17": -0.111111,
+        "fishtestA:18": -0.162442,
+        "fishtestA:2": -0.023663,
+        "fishtestA:3": -0.159091,
+        "fishtestA:4": -0.216463,
+        "fishtestA:5": 0.134286,
+        "fishtestA:6": -0.13,
+        "fishtestA:7": 0.069124,
+        "fishtestA:8": 0.037162,
+        "fishtestA:9": 0.083333,
+        "fishtestB:0": 0.007353,
+        "fishtestB:1": -0.006466,
+        "fishtestB:10": -0.265038,
+        "fishtestB:11": -0.188503,
+        "fishtestB:12": -0.108889,
+        "fishtestB:13": 0.191176,
+        "fishtestB:14": -0.086134,
+        "fishtestB:15": 0.087,
+        "fishtestB:16": -0.103755,
+        "fishtestB:17": 0.148148,
+        "fishtestB:18": -0.210337,
+        "fishtestB:19": -0.31,
+        "fishtestB:2": 0.055714,
+        "fishtestB:3": -0.242915,
+        "fishtestB:4": -0.02439,
+        "fishtestB:5": 0.082974,
+        "fishtestB:6": -0.057,
+        "fishtestB:7": 0.058889,
+        "fishtestB:8": -0.205466,
+        "fishtestB:9": -0.227163
+      },
+      "success": false
+    },
+    "counts": {
+      "n_negative": 1105,
+      "n_positive": 695
+    },
+    "deployment": {
+      "actions_only": {
+        "fpr_achieved": 0.434389,
+        "frozen_fit": {
+          "fpr_target": 0.1,
+          "q": 0.088,
+          "t": 15.0
+        },
+        "n_negative": 1105,
+        "n_positive": 695,
+        "recall": 0.523741,
+        "recall_lower_95_one_sided": 0.467768
+      },
+      "both": {
+        "fpr_achieved": 0.442534,
+        "frozen_fit": {
+          "fpr_target": 0.1,
+          "q": 0.45,
+          "t": 60.0
+        },
+        "n_negative": 1105,
+        "n_positive": 695,
+        "recall": 0.221583,
+        "recall_lower_95_one_sided": 0.176471
+      }
+    },
+    "rules": {
+      "R1": {
+        "auroc": 0.817107,
+        "auroc_ci95": [
+          0.794197,
+          0.835939
+        ],
+        "n_negative": 1105,
+        "n_positive": 695
+      },
+      "R12": {
+        "auroc": 0.861139,
+        "auroc_ci95": [
+          0.836272,
+          0.88027
+        ],
+        "n_negative": 1105,
+        "n_positive": 695
+      },
+      "R2": {
+        "auroc": 0.86092,
+        "auroc_ci95": [
+          0.83614,
+          0.879851
+        ],
+        "n_negative": 1105,
+        "n_positive": 695
+      },
+      "R3": {
+        "auroc": 0.156499,
+        "auroc_ci95": [
+          0.138429,
+          0.180285
+        ],
+        "n_negative": 1105,
+        "n_positive": 695
+      }
+    },
+    "scorers": {
+      "actions_only": {
+        "auroc": 0.576205,
+        "auroc_ci95": [
+          0.531745,
+          0.6144
+        ],
+        "n_negative": 1105,
+        "n_positive": 695
+      },
+      "both": {
+        "auroc": 0.426938,
+        "auroc_ci95": [
+          0.376616,
+          0.479083
+        ],
+        "n_negative": 1105,
+        "n_positive": 695
+      },
+      "empty": {
+        "auroc": 0.495489,
+        "auroc_ci95": [
+          0.475772,
+          0.515127
+        ],
+        "n_negative": 1105,
+        "n_positive": 695
+      },
+      "oracle": {
+        "auroc": 0.835866,
+        "auroc_ci95": [
+          0.814627,
+          0.858796
+        ],
+        "n_negative": 1105,
+        "n_positive": 695
+      }
+    }
+  },
+  "n_cases": 1800,
+  "n_games": 40,
+  "outcome_counts": {
+    "over_take": 695,
+    "unchanged": 647,
+    "under_take": 458
+  },
+  "parse_failures": {
+    "actions_only": 0,
+    "both": 0,
+    "empty": 0,
+    "oracle": 0
+  },
+  "round0": {
+    "break_rate_a": 0.66,
+    "break_rate_b": 0.09,
+    "n": 200,
+    "n_games": 40,
+    "rules": {
+      "R1": {
+        "auroc_a": 0.425134,
+        "auroc_b": 0.639194,
+        "n_negative_b": 182,
+        "n_positive_b": 18
+      },
+      "R12": {
+        "auroc_a": 0.5,
+        "auroc_b": 0.5,
+        "n_negative_b": 182,
+        "n_positive_b": 18
+      },
+      "R2": {
+        "auroc_a": 0.5,
+        "auroc_b": 0.5,
+        "n_negative_b": 182,
+        "n_positive_b": 18
+      },
+      "R3": {
+        "auroc_a": 0.245989,
+        "auroc_b": 0.519841,
+        "n_negative_b": 182,
+        "n_positive_b": 18
+      }
+    }
+  },
+  "shortfall_cases": 0,
+  "tag": ""
+}
