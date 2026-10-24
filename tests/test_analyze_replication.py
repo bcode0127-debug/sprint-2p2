@@ -28,8 +28,17 @@ def test_pointed_at_test_split_is_byte_identical(tmp_path: Path) -> None:
     assert round(extra["combination"]["C2"]["mean_of_per_game_differences"], 3) == -0.003  # noqa: PLR2004
 
 
-def test_replication_split_is_refused_without_amendment_url(tmp_path: Path) -> None:
-    """Before amendment1_url is recorded the replication analysis refuses to run."""
+def test_replication_split_is_refused_without_amendment_url(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """With amendment1_url removed from the freeze file, the replication analysis refuses to run."""
+    frozen = json.loads((ROOT / "configs" / "frozen.json").read_text())
+    for key in ("amendment1_url", "amendment1_sha256"):
+        frozen.pop(key, None)
+    path = tmp_path / "frozen.json"
+    path.write_text(json.dumps(frozen))
+    monkeypatch.setattr(splits, "FROZEN", path)
     with pytest.raises(splits.GateError):
-        analyze_replication.run("replication", tmp_path)
-    assert not (tmp_path / "tables.json").exists()
+        analyze_replication.run("replication", tmp_path / "out")
+    assert not (tmp_path / "out" / "tables.json").exists()

@@ -8,6 +8,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 LOCKED = {
+    "docs/amendment1.md": "72510f08c4653003ac00040059cfc3e93c826755ff94c644f033049785ce1256",
     "docs/preregistration.md": "a07ea2f7a2be513a06b594f431ae504bb0851f88518e4a048afd73cffaac34e9",
     "configs/monitor.json": "bc6da2d7c5df992bc7ce2423f7b248308e65d5735b96e806a2e6a25acfb5ecb1",
     "prompts/monitor_prompt_v1.txt": "a526d0d078e2056c58f7d6a9a583e176b7dc8b03f30d4b4ac918d4ca54678844",

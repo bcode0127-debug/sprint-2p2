@@ -1,0 +1,248 @@
+{
+  "tag": "descriptive, no test",
+  "views": {
+    "actions_only": {
+      "frozen_fit": {
+        "fpr_target": 0.1,
+        "q": 0.08800000000000002,
+        "t": 15.0
+      },
+      "refit_on_trials_0_to_9": {
+        "fpr_target": 0.1,
+        "q": 0.6714285714285717,
+        "t": 18.0
+      },
+      "trials_10_to_19": {
+        "frozen": {
+          "fpr": 0.145748987854251,
+          "fpr_expected": 0.1496032388663968,
+          "recall": 0.08374384236453201,
+          "recall_expected": 0.07873891625615764
+        },
+        "n": 450,
+        "refit": {
+          "fpr": 0.11740890688259109,
+          "fpr_expected": 0.10815500289184501,
+          "recall": 0.04433497536945813,
+          "recall_expected": 0.04278676988036594
+        }
+      }
+    },
+    "both": {
+      "frozen_fit": {
+        "fpr_target": 0.1,
+        "q": 0.4500000000000002,
+        "t": 60.0
+      },
+      "refit_on_trials_0_to_9": {
+        "fpr_target": 0.1,
+        "q": 0.6714285714285717,
+        "t": 60.0
+      },
+      "trials_10_to_19": {
+        "frozen": {
+          "fpr": 0.15789473684210525,
+          "fpr_expected": 0.15991902834008098,
+          "recall": 0.2857142857142857,
+          "recall_expected": 0.2773399014778325
+        },
+        "n": 450,
+        "refit": {
+          "fpr": 0.1700404858299595,
+          "fpr_expected": 0.16888374783111626,
+          "recall": 0.2955665024630542,
+          "recall_expected": 0.2926108374384237
+        }
+      }
+    },
+    "empty": {
+      "frozen_fit": {
+        "fpr_target": 0.1,
+        "q": 0.8,
+        "t": 15.0
+      },
+      "refit_on_trials_0_to_9": {
+        "fpr_target": 0.1,
+        "q": 0.7289473684210527,
+        "t": 15.0
+      },
+      "trials_10_to_19": {
+        "frozen": {
+          "fpr": 0.11336032388663968,
+          "fpr_expected": 0.1036437246963563,
+          "recall": 0.15270935960591134,
+          "recall_expected": 0.1458128078817734
+        },
+        "n": 450,
+        "refit": {
+          "fpr": 0.10121457489878542,
+          "fpr_expected": 0.09443852546345623,
+          "recall": 0.1330049261083744,
+          "recall_expected": 0.13286232823437907
+        }
+      }
+    },
+    "freshness": {
+      "frozen_fit": {
+        "fpr_target": 0.1,
+        "q": 0.9555555555555557,
+        "t": 62.0
+      },
+      "refit_on_trials_0_to_9": {
+        "fpr_target": 0.1,
+        "q": 0.33571428571428585,
+        "t": 55.0
+      },
+      "trials_10_to_19": {
+        "frozen": {
+          "fpr": 0.08502024291497975,
+          "fpr_expected": 0.08412055780476833,
+          "recall": 0.06403940886699508,
+          "recall_expected": 0.06272577996715928
+        },
+        "n": 450,
+        "refit": {
+          "fpr": 0.15384615384615385,
+          "fpr_expected": 0.15806824754193177,
+          "recall": 0.1330049261083744,
+          "recall_expected": 0.13311048557353977
+        }
+      }
+    },
+    "messages_only": {
+      "frozen_fit": {
+        "fpr_target": 0.1,
+        "q": 0.3200000000000003,
+        "t": 40.0
+      },
+      "refit_on_trials_0_to_9": {
+        "fpr_target": 0.1,
+        "q": 0.8375000000000004,
+        "t": 35.0
+      },
+      "trials_10_to_19": {
+        "frozen": {
+          "fpr": 0.12955465587044535,
+          "fpr_expected": 0.13052631578947368,
+          "recall": 0.270935960591133,
+          "recall_expected": 0.27073891625615765
+        },
+        "n": 450,
+        "refit": {
+          "fpr": 0.1659919028340081,
+          "fpr_expected": 0.166751012145749,
+          "recall": 0.33497536945812806,
+          "recall_expected": 0.33442118226600986
+        }
+      }
+    },
+    "oracle": {
+      "frozen_fit": {
+        "fpr_target": 0.1,
+        "q": 0.3000000000000001,
+        "t": 4.0
+      },
+      "refit_on_trials_0_to_9": {
+        "fpr_target": 0.1,
+        "q": 0.24666666666666684,
+        "t": 4.0
+      },
+      "trials_10_to_19": {
+        "frozen": {
+          "fpr": 0.145748987854251,
+          "fpr_expected": 0.1348178137651822,
+          "recall": 1.0,
+          "recall_expected": 1.0
+        },
+        "n": 450,
+        "refit": {
+          "fpr": 0.145748987854251,
+          "fpr_expected": 0.13244264507422404,
+          "recall": 1.0,
+          "recall_expected": 1.0
+        }
+      }
+    },
+    "own_only": {
+      "frozen_fit": {
+        "fpr_target": 0.1,
+        "q": 0.04285714285714296,
+        "t": 55.0
+      },
+      "refit_on_trials_0_to_9": {
+        "fpr_target": 0.1,
+        "q": 0.07777777777777804,
+        "t": 50.0
+      },
+      "trials_10_to_19": {
+        "frozen": {
+          "fpr": 0.08097165991902834,
+          "fpr_expected": 0.08235974551764025,
+          "recall": 0.11330049261083744,
+          "recall_expected": 0.10964109781843771
+        },
+        "n": 450,
+        "refit": {
+          "fpr": 0.11740890688259109,
+          "fpr_expected": 0.11587944219523166,
+          "recall": 0.13793103448275862,
+          "recall_expected": 0.1413793103448276
+        }
+      }
+    },
+    "round_only": {
+      "frozen_fit": {
+        "fpr_target": 0.1,
+        "q": 0.24854368932038837,
+        "t": 15.0
+      },
+      "refit_on_trials_0_to_9": {
+        "fpr_target": 0.1,
+        "q": 0.22142857142857145,
+        "t": 15.0
+      },
+      "trials_10_to_19": {
+        "frozen": {
+          "fpr": 0.09716599190283401,
+          "fpr_expected": 0.09259856137730435,
+          "recall": 0.06896551724137931,
+          "recall_expected": 0.09427519250083698
+        },
+        "n": 450,
+        "refit": {
+          "fpr": 0.08906882591093117,
+          "fpr_expected": 0.08293811451706189,
+          "recall": 0.06403940886699508,
+          "recall_expected": 0.08399014778325123
+        }
+      }
+    },
+    "structured": {
+      "frozen_fit": {
+        "fpr_target": 0.1,
+        "q": 0.21666666666666679,
+        "t": 60.0
+      },
+      "refit_on_trials_0_to_9": {
+        "fpr_target": 0.1,
+        "q": 0.8500000000000005,
+        "t": 58.0
+      },
+      "trials_10_to_19": {
+        "frozen": {
+          "fpr": 0.0931174089068826,
+          "fpr_expected": 0.10398110661268557,
+          "recall": 0.20689655172413793,
+          "recall_expected": 0.21625615763546802
+        },
+        "n": 450,
+        "refit": {
+          "fpr": 0.16194331983805668,
+          "fpr_expected": 0.1682186234817814,
+          "recall": 0.29064039408866993,
+          "recall_expected": 0.2899014778325123
+        }
+      }
+    }
+  }
+}

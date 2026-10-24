@@ -24,10 +24,23 @@ def test_syntax() -> None:
 
 
 def test_fishing_batches_dry_run_prints_pins_and_command() -> None:
-    """Each batch prints a pin before, the harness command with its suffix, and a pin after."""
+    """Each batch prints pin, harness command and pin, or is refused once its output exists."""
     before = PIN.read_bytes()
     for batch in ("A", "B"):
         out = run("fishing-test", batch, "--dry-run")
+        existing = (
+            ROOT
+            / "harness"
+            / "outputs"
+            / "experiments"
+            / "fishing"
+            / "5agents"
+            / f"gpt-5.2_endogenous_fishtest{batch}.json"
+        )
+        if existing.exists():
+            assert out.returncode == 3  # noqa: PLR2004
+            assert "refusing" in out.stderr
+            continue
         assert out.returncode == 0
         lines = [ln for ln in out.stdout.splitlines() if ln.startswith("+ ")]
         assert len(lines) == 3  # noqa: PLR2004
