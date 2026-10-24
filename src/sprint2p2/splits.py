@@ -12,12 +12,17 @@ MAIN_RAW = RAW / "elfarol_main_gpt-5.2.json"
 PILOT_RAW = RAW / "elfarol_pilot_gpt-5.2.json"
 REP_RAW = RAW / "elfarol_rep_gpt-5.2.json"
 FISHING_PILOT_RAW = RAW / "fishing_fishpilot_gpt-5.2.json"
+FISHING_OCT23_RAW = RAW / "fishing_pilot_gpt-5.2.json"
 FROZEN = ROOT / "configs" / "frozen.json"
 MAIN_TRIALS = {"dev": range(10), "threshold": range(10, 20), "test": range(20, 40)}
 SCORED_ROUNDS = range(1, 10)
 ROUND_ZERO = range(1)
-GATED = ("threshold", "test", "replication")
+GATED = ("threshold", "test", "replication", "fishing_test")
+THRESHOLD_SPLITS = ("test", "replication", "fishing_test")
+AMENDMENT_SPLITS = ("replication", "fishing_test")
 AMENDMENT_FIELD = "amendment1_url"
+FISHING_DEV_SOURCES = ("fishpilot", "fishpilot_oct23")
+FISHING_TEST_SOURCES = ("fishtestA", "fishtestB")
 FIRST_HELD_OUT_TRIAL = 10
 FIRST_TEST_TRIAL = 20
 FROZEN_FIELDS = ("prereg_commit", "osf_url")
@@ -76,18 +81,18 @@ def gate_ok(split: str, path: Path = FROZEN) -> bool:
     frozen = _load_frozen(path)
     if frozen is None or not all(_nonempty(frozen, k) for k in FROZEN_FIELDS):
         return False
-    if split in ("test", "replication") and not _has_thresholds(frozen):
+    if split in THRESHOLD_SPLITS and not _has_thresholds(frozen):
         return False
-    return split != "replication" or _nonempty(frozen, AMENDMENT_FIELD)
+    return split not in AMENDMENT_SPLITS or _nonempty(frozen, AMENDMENT_FIELD)
 
 
 def check_gate(split: str, path: Path = FROZEN) -> None:
     """Raise unless the split may be scored by the monitor."""
     if not gate_ok(split, path):
         need = "prereg_commit and a non-empty osf_url"
-        if split in ("test", "replication"):
+        if split in THRESHOLD_SPLITS:
             need += ", plus per-view t and q from scripts/fit_thresholds.py"
-        if split == "replication":
+        if split in AMENDMENT_SPLITS:
             need += f", plus a non-empty {AMENDMENT_FIELD}"
         msg = f"monitor calls on the {split} split need {path.name} with {need}"
         raise GateError(msg)
@@ -97,6 +102,8 @@ def held_out_split(case: dict) -> str | None:
     """Return the split a case belongs to by its raw identity (main trial number)."""
     if case["source"] == "rep":
         return "replication"
+    if case["source"] in FISHING_TEST_SOURCES:
+        return "fishing_test"
     if case["source"] != "main" or case["trial"] < FIRST_HELD_OUT_TRIAL:
         return None
     return "threshold" if case["trial"] < FIRST_TEST_TRIAL else "test"
@@ -106,7 +113,7 @@ def guard_case(case: dict, path: Path = FROZEN) -> None:
     """Gate one case by its raw identity, so a wrong split label cannot bypass it."""
     by_trial = held_out_split(case)
     declared = case.get("split")
-    for split in ("replication", "test", "threshold"):
+    for split in ("fishing_test", "replication", "test", "threshold"):
         if split in (by_trial, declared):
             check_gate(split, path)
             break
