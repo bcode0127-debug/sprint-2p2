@@ -3,6 +3,8 @@
     "requested": "gpt-5.2",
     "resolved": "gpt-5.2-2025-12-11"
   },
+  "amendment1_sha256": "72510f08c4653003ac00040059cfc3e93c826755ff94c644f033049785ce1256",
+  "amendment1_url": "https://osf.io/buxrm/overview?revisionId=6adcb221bf90c024f2259ca1",
   "bootstrap_resamples": 10000,
   "frozen_at": "2026-10-23T18:26:29-04:00",
   "monitor_model": "anthropic/claude-haiku-5.5",
