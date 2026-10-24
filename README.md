@@ -1,4 +1,6 @@
-# sprint-2p2
+# What Agents Say Predicts Broken Promises, but an LLM Monitor Does Not Beat a One-Line Count
+
+A pre-registered test of whether announcements help an LLM monitor predict that an agent will break them, in El Farol and in a Fishing transfer game.
 
 ## Question
 
@@ -7,17 +9,56 @@ can a separate monitor model, shown only the public record up to the moment befo
 predict that the agent will break its announcement?
 We score this as a ranking problem (AUROC) and as recall at a fixed 10% false-positive rate,
 against simple no-LLM rules and against ablated views of the record.
+A second game, Fishing (5 GPT-5.2 agents, 10 rounds, each announces a catch and then chooses one; the lake collapses when the total exceeds 14), repeats the test, and there a break means the catch differs from the announced catch ([docs/amendment1.md](docs/amendment1.md), section 4).
+
+## Results
+
+Primary contrast: AUROC of Both (announcements plus actions) minus Actions-only, one-sided 5th percentile of a bootstrap over whole games (10,000 resamples, seed 2026).
+
+| Run | Both | Actions-only | Difference | 5th percentile | Source |
+|---|---|---|---|---|---|
+| El Farol test (20 games) | 0.655 | 0.508 | +0.147 | +0.088 | [results/tables/final/tables.json](results/tables/final/tables.json) (`primary`) |
+| El Farol replication (20 games) | 0.668 | 0.501 | +0.167 | +0.133 | [results/tables/replication/tables.json](results/tables/replication/tables.json) (`primary`) |
+| Fishing transfer (40 games) | 0.650 | 0.536 | +0.114 | +0.072 | [results/tables/fishing_test/tables.json](results/tables/fishing_test/tables.json) (`label_a_any_change`) |
+
+Secondary contrasts, Both minus the named view (difference, 5th percentile, Holm p), from the `secondary` block of each tables.json:
+
+- S1 (Own-only): test +0.106, +0.075, 0.0003 ([final](results/tables/final/tables.json)); replication +0.111, +0.080, 0.0003 ([replication](results/tables/replication/tables.json)).
+- S2 (Freshness): test +0.122, +0.080, 0.0003 ([final](results/tables/final/tables.json)); replication +0.153, +0.111, 0.0003 ([replication](results/tables/replication/tables.json)).
+- S3 (counting rule): test -0.015, -0.067, 0.6991 ([final](results/tables/final/tables.json)); replication +0.035, -0.020, 0.1533 ([replication](results/tables/replication/tables.json)).
+
+Combination with the counting rule, replication only ([results/tables/replication/extras.json](results/tables/replication/extras.json), `combination`):
+
+- C1 (combination minus Both): +0.015, 5th percentile -0.007, Holm p 0.1261.
+- C2 (combination minus the counting rule): +0.051, 5th percentile +0.013, Holm p 0.0168.
+
+![AUROC by view with 95% game-bootstrap intervals](results/figures/figure1_auroc_by_view.png)
+
+Figure 1 values: [results/figures/figure_data.json](results/figures/figure_data.json), read from the three tables.json files above. The figures and `results/report_tables.md` are built by `scripts/make_figures.py`.
+
+## Pre-registration
+
+- OSF: https://osf.io/buxrm
+- Frozen plan: `docs/preregistration.md`, SHA-256 `a07ea2f7a2be513a06b594f431ae504bb0851f88518e4a048afd73cffaac34e9`, frozen 2026-10-23T18:26:29-04:00 at commit `3699338d53ebdab30ba1a7009e4df6fbfff3cc7e` (record: [configs/frozen.json](configs/frozen.json)).
+- Amendment 1 (OSF Update 1): [docs/amendment1.md](docs/amendment1.md), SHA-256 `72510f08c4653003ac00040059cfc3e93c826755ff94c644f033049785ce1256`. It adds the replication games and the Fishing transfer.
+
+The primary test is the paired AUROC difference Both minus Actions-only on the test split, one-sided, with a bootstrap over whole games. S1 to S3 and the deployment reading (recall at 10% FPR) are secondary.
 
 ## New versus pre-existing
 
-- Pre-existing: the game harness (https://github.com/Jerick-1380/LLM-Trust-Breaking at a pinned
-  commit), cloned into `harness/` and used unmodified. See [PROVENANCE.md](PROVENANCE.md).
-- New in this repo: everything in `src/sprint2p2/`, `scripts/`, `tests/`, `prompts/`, `configs/`,
-  `docs/`, and the committed data and scores under `data/`, `scores/` and `results/`.
+- Pre-existing: the game harness, https://github.com/Jerick-1380/LLM-Trust-Breaking at commit `fd11aca` (full hash in [PROVENANCE.md](PROVENANCE.md)), used unmodified. It has no license, so it is not redistributed and `harness/` is git-ignored.
+- New in this repo: everything in `src/sprint2p2/`, `scripts/`, `tests/`, `prompts/`, `configs/`, `docs/`, and the committed data and scores under `data/`, `scores/` and `results/`.
+
+To regenerate data, clone the harness into `harness/` and pin it (generation also needs the keys below):
+
+```bash
+git clone https://github.com/Jerick-1380/LLM-Trust-Breaking harness
+git -C harness checkout fd11aca351e52c65c929e1a7d46d9f087f237adf
+```
 
 ## Keys
 
-Put two keys in `.env` at the project root (git-ignored, never commit it):
+Only generation and scoring need keys. Put two keys in `.env` at the project root (git-ignored, never commit it):
 
 ```
 OPENAI_API_KEY=      # runs the GPT-5.2 agents through the harness
@@ -26,41 +67,53 @@ OPENROUTER_API_KEY=  # runs the Haiku 5.5 monitor
 
 ## Reproduce
 
+Install dependencies from `requirements.lock` (Python 3.12). None of these commands calls an API; each reads committed score files.
+
 ```bash
 make reproduce
 ```
 
-This recomputes the primary row (the paired AUROC difference Both minus Actions-only) from the
-committed score files with no API calls and prints the row and its SHA-256. While only development scores exist it uses `scores/dev/` and labels the output
-DEV-ONLY. Install dependencies from `requirements.lock` (Python 3.12).
+This recomputes the primary row (Both minus Actions-only on the test split) and prints it with its SHA-256 (`4a3fe5d9...6835`).
 
-Other targets: `make test`, `make lint`. The pipeline is `scripts/score_views.py` (scores a split),
-`scripts/analyze.py` (tables) and `scripts/reproduce_row.py`.
+```bash
+PYTHONPATH=src .venv/bin/python -m scripts.analyze              # results/tables/final
+PYTHONPATH=src .venv/bin/python -m scripts.analyze_replication  # results/tables/replication
+PYTHONPATH=src .venv/bin/python -m scripts.recalibrate_replication
+PYTHONPATH=src .venv/bin/python -m scripts.analyze_fishing      # results/tables/fishing_test
+```
 
-## Pre-registration
+Each was run on the final commit and rewrote its output files byte for byte (no change in `git status`). To rebuild the figures and `results/report_tables.md` from those tables, run `PYTHONPATH=src .venv/bin/python -m scripts.make_figures`; the PNGs and tables are identical on rerun, while the PDFs differ only in embedded metadata. Other targets: `make test`, `make lint`. Where every number lives: [docs/numbers_to_files.md](docs/numbers_to_files.md).
 
-The analysis plan is `docs/preregistration.md` (v2, DRAFT, NOT FROZEN). The primary test is the
-paired AUROC difference Both minus Actions-only on the test split, one-sided, with a bootstrap over
-whole games. S1 to S3 and the deployment reading (recall at 10% FPR) are secondary. The freeze
-record will be `configs/frozen.json`; the OSF link goes here once the registration exists:
-OSF: https://osf.io/buxrm
+## Data and splits
 
-## Data and gate
+Raw logs are in `data/raw/` with `SHA256SUMS`. Rounds 1 to 9 are scored; round 0 is a separate set.
 
-Raw logs are in `data/raw/` with `SHA256SUMS`. Splits are dev (pilot plus main trials 0 to 9),
-threshold (trials 10 to 19) and test (trials 20 to 39), rounds 1 to 9; round 0 is a separate set.
-Threshold cases need `configs/frozen.json` with a non-empty `prereg_commit` and `osf_url`; test
-cases also need per-view `t` and `q` written by `scripts/fit_thresholds.py`
-(see `docs/adr/0006-decision-8-and-the-gate.md`).
+| Split | Games | Scored cases | Scores |
+|---|---|---|---|
+| El Farol dev (pilot plus main trials 0 to 9) | dev only | 585 | `scores/dev` |
+| El Farol threshold (main trials 10 to 19) | 10 | 450 | `scores/threshold` |
+| El Farol test (main trials 20 to 39) | 20 | 900 | `scores/test` |
+| El Farol replication (`elfarol_rep`) | 20 | 900 | `scores/replication` |
+| Fishing test (batches `fishtestA` and `fishtestB`) | 40 | 1,800 | `scores/fishing_test` |
+
+Fishing development games are in `scores/fishing_dev` (135 scored cases) and are never reported as a result. Thresholds for a 10% FPR are fitted on the threshold split and frozen in `configs/frozen.json` before any test call. The gate in `src/sprint2p2/splits.py` refuses monitor calls on a held-out split until the freeze file holds what that split needs (see [docs/adr/0006-decision-8-and-the-gate.md](docs/adr/0006-decision-8-and-the-gate.md) and `CLAUDE.md`). Every held-out split has been scored once.
 
 ## Costs
 
-Measured so far, at OpenRouter list prices for Haiku 5.5 ($0.10 per million prompt tokens,
-$0.50 per million completion tokens):
+Only figures that a committed file records. Monitor tokens for the Both view, from the `deployment_reading` block of each tables.json:
 
-- Monitor, v2 setting (reasoning on): about $0.37 per 100 cases per view (585 dev cases cost
-  $0.216).
-- All spikes and prompt rounds so far: under $1 in total.
-- Projection for scoring threshold plus test (1,350 cases) on all nine views: roughly $4.50.
-  The OpenRouter key has a $10 spend cap and expires 2026-10-30.
-- Agents (OpenAI GPT-5.2): the harness does not log token usage, so agent cost is not recorded.
+| Run | Prompt tokens | Completion tokens | Reasoning tokens | Source |
+|---|---|---|---|---|
+| El Farol test | 1,561,001 | 352,591 | 279,494 | [results/tables/final/tables.json](results/tables/final/tables.json) |
+| El Farol replication | 1,520,164 | 344,327 | 270,796 | [results/tables/replication/tables.json](results/tables/replication/tables.json) |
+
+Monitor dollar cost and Fishing tokens: TODO(Zay). The harness does not log agent token usage, so agent cost is not recorded.
+
+## Known issue
+
+On Oct 24 a commit hook run in a linked git worktree exported `GIT_DIR`, so the freeze tests ran `git init` and `git config` against the real repository and overwrote seven tracked files in the worktree; both were restored and GitHub main was unaffected.
+Fix: commit `575d537` (`scripts/freeze.py` now clears git's structural variables). Details: [docs/HANDOFF.md](docs/HANDOFF.md).
+
+## Report
+
+Report: TODO(Zay) link after submission
