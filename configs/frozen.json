@@ -6,7 +6,7 @@
   "bootstrap_resamples": 10000,
   "frozen_at": "2026-10-23T18:26:29-04:00",
   "monitor_model": "anthropic/claude-haiku-5.5",
-  "osf_url": "",
+  "osf_url": "https://osf.io/buxrm",
   "prereg_commit": "3699338d53ebdab30ba1a7009e4df6fbfff3cc7e",
   "seeds": {
     "bootstrap_and_threshold_ties": 2026,
