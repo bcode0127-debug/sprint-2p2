@@ -13,6 +13,10 @@ PILOT_RAW = RAW / "elfarol_pilot_gpt-5.2.json"
 REP_RAW = RAW / "elfarol_rep_gpt-5.2.json"
 FISHING_PILOT_RAW = RAW / "fishing_fishpilot_gpt-5.2.json"
 FISHING_OCT23_RAW = RAW / "fishing_pilot_gpt-5.2.json"
+FISHING_TEST_RAW = {
+    "fishtestA": RAW / "fishing_fishtestA_gpt-5.2.json",
+    "fishtestB": RAW / "fishing_fishtestB_gpt-5.2.json",
+}
 FROZEN = ROOT / "configs" / "frozen.json"
 MAIN_TRIALS = {"dev": range(10), "threshold": range(10, 20), "test": range(20, 40)}
 SCORED_ROUNDS = range(1, 10)
@@ -69,7 +73,7 @@ def _load_frozen(path: Path) -> dict | None:
     return frozen if isinstance(frozen, dict) else None
 
 
-def gate_ok(split: str, path: Path = FROZEN) -> bool:
+def gate_ok(split: str, path: Path | None = None) -> bool:
     """Return True when the freeze file allows monitor calls on the split.
 
     Threshold calls need prereg_commit and a non-empty osf_url. Test calls also need per-view
@@ -78,7 +82,7 @@ def gate_ok(split: str, path: Path = FROZEN) -> bool:
     """
     if split not in GATED:
         return True
-    frozen = _load_frozen(path)
+    frozen = _load_frozen(path or FROZEN)
     if frozen is None or not all(_nonempty(frozen, k) for k in FROZEN_FIELDS):
         return False
     if split in THRESHOLD_SPLITS and not _has_thresholds(frozen):
@@ -86,8 +90,9 @@ def gate_ok(split: str, path: Path = FROZEN) -> bool:
     return split not in AMENDMENT_SPLITS or _nonempty(frozen, AMENDMENT_FIELD)
 
 
-def check_gate(split: str, path: Path = FROZEN) -> None:
+def check_gate(split: str, path: Path | None = None) -> None:
     """Raise unless the split may be scored by the monitor."""
+    path = path or FROZEN
     if not gate_ok(split, path):
         need = "prereg_commit and a non-empty osf_url"
         if split in THRESHOLD_SPLITS:
@@ -109,7 +114,7 @@ def held_out_split(case: dict) -> str | None:
     return "threshold" if case["trial"] < FIRST_TEST_TRIAL else "test"
 
 
-def guard_case(case: dict, path: Path = FROZEN) -> None:
+def guard_case(case: dict, path: Path | None = None) -> None:
     """Gate one case by its raw identity, so a wrong split label cannot bypass it."""
     by_trial = held_out_split(case)
     declared = case.get("split")

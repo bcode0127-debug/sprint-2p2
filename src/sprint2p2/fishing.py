@@ -4,9 +4,10 @@ Fishing collapses when the total catch exceeds 14 (harness fishing.py, evaluate)
 catches 0 to 5. Every view is built from raw fields only.
 """
 
+import json
 from pathlib import Path
 
-from sprint2p2 import monitor, scoring
+from sprint2p2 import monitor, scoring, splits
 from sprint2p2.views import ORDINALS, _trial
 
 COLLAPSE_THRESHOLD = 14
@@ -114,11 +115,17 @@ def rule_scores(log: dict, trial: int, round_r: int, agent_j: str) -> dict[str, 
     return {"R1": r1, "R2": r2, "R12": min(r1, r2), "R3": -abs(COLLAPSE_THRESHOLD - total)}
 
 
-def fishing_cases(log: dict, source: str) -> list[dict]:
-    """List development cases (rounds 1 to 9) with both labels; nulls are dropped."""
+def fishing_cases(
+    log: dict,
+    source: str,
+    *,
+    split: str = "fishing_dev",
+    rounds: range = SCORED_ROUNDS,
+) -> list[dict]:
+    """List cases (rounds 1 to 9 by default) with both labels; nulls are dropped."""
     cases = []
     for rnd in log["rounds"]:
-        if rnd["round_id"] not in SCORED_ROUNDS:
+        if rnd["round_id"] not in rounds:
             continue
         for trial in rnd["trials"]:
             nums = [num(r["stage2"].get("stated_action")) for r in trial["agents"].values()]
@@ -130,7 +137,7 @@ def fishing_cases(log: dict, source: str) -> list[dict]:
                     continue
                 cases.append(
                     {
-                        "split": "fishing_dev",
+                        "split": split,
                         "source": source,
                         "game": f"{source}:{trial['trial_id']}",
                         "trial": trial["trial_id"],
@@ -144,7 +151,8 @@ def fishing_cases(log: dict, source: str) -> list[dict]:
 
 
 def score_case(case: dict, view: str, runner: scoring.Runner) -> dict:
-    """Build the Fishing view, call the monitor with the Fishing prompt and return a row."""
+    """Gate the case, build the Fishing view, call the monitor and return a row."""
+    splits.guard_case(case)
     cfg = runner.cfg
     record = build_fishing_view(
         runner.logs[case["source"]],
@@ -158,7 +166,7 @@ def score_case(case: dict, view: str, runner: scoring.Runner) -> dict:
     )
     res = monitor.monitor_call(prompt, cfg.scale, runner.post, cfg)
     return {
-        "tag": "DEV-ONLY",
+        "tag": "DEV-ONLY" if case["split"] == "fishing_dev" else "",
         "id": scoring.case_id(case),
         **{k: case[k] for k in ("split", "source", "game", "trial", "round", "agent", "label")},
         "label_over": case["label_over"],
@@ -174,3 +182,13 @@ def score_case(case: dict, view: str, runner: scoring.Runner) -> dict:
 
 
 PROMPT_PATH = Path(monitor.PROMPT_DIR) / FISHING_TEMPLATE
+
+
+def load_test_logs(paths: dict[str, Path] | None = None) -> dict[str, dict]:
+    """Load both Fishing test batch logs; refuse unless fishtestA and fishtestB both exist."""
+    paths = paths or splits.FISHING_TEST_RAW
+    missing = [name for name, p in paths.items() if not p.exists()]
+    if missing:
+        msg = f"fishing_test needs both batch logs; missing: {', '.join(sorted(missing))}"
+        raise splits.GateError(msg)
+    return {name: json.loads(p.read_text(encoding="utf-8")) for name, p in paths.items()}
