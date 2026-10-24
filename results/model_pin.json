@@ -55,5 +55,23 @@
     "requested": "gpt-5.2",
     "returned_model": "gpt-5.2-2025-12-11",
     "timestamp_et": "2026-10-24T08:51:01-04:00"
+  },
+  {
+    "label": "before_amendment1",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-24T09:43:45-04:00"
+  },
+  {
+    "label": "before_fishtestA",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-24T09:45:15-04:00"
+  },
+  {
+    "label": "after_fishtestA",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-24T10:08:40-04:00"
   }
 ]
