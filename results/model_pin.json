@@ -43,5 +43,17 @@
     "requested": "gpt-5.2",
     "returned_model": "gpt-5.2-2025-12-11",
     "timestamp_et": "2026-10-23T13:49:10-04:00"
+  },
+  {
+    "label": "before_saturday",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-24T08:27:55-04:00"
+  },
+  {
+    "label": "after_saturday",
+    "requested": "gpt-5.2",
+    "returned_model": "gpt-5.2-2025-12-11",
+    "timestamp_et": "2026-10-24T08:51:01-04:00"
   }
 ]

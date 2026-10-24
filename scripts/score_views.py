@@ -49,7 +49,7 @@ def write_baselines(logs: dict, cases: list[dict], fit_split: str, out: Path) ->
 def main() -> None:
     """Score one split into scores/<split>/<view>.jsonl."""
     ap = argparse.ArgumentParser()
-    ap.add_argument("--split", required=True, choices=["dev", "threshold", "test"])
+    ap.add_argument("--split", required=True, choices=["dev", "threshold", "test", "replication"])
     ap.add_argument("--views", default=",".join(views.VIEWS))
     ap.add_argument("--sample", type=int, default=0, help="balanced subset size (dev only)")
     ap.add_argument("--out-root", default=str(ROOT / "scores"))

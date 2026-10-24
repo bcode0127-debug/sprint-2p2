@@ -80,7 +80,7 @@ def render_prompt(
     template: str = "monitor_prompt_v0.txt",
 ) -> str:
     """Fill the prompt template; only SCALE differs between variants."""
-    text = (PROMPT_DIR / template).read_text()
+    text = (PROMPT_DIR / template).read_text(encoding="utf-8")
     return text.format(AGENT=agent, R=round_r, RECORD=record, SCALE=scale)
 
 

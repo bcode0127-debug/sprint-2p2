@@ -104,3 +104,39 @@ def test_guard_case_uses_raw_identity(tmp_path: Path) -> None:
     splits.guard_case({"source": "main", "trial": 12, "split": "dev"}, thr_only)
     with pytest.raises(splits.GateError):
         splits.guard_case({"source": "main", "trial": 25, "split": "dev"}, thr_only)
+
+
+def test_replication_needs_amendment_url(tmp_path: Path) -> None:
+    """Replication scoring needs thresholds and a non-empty amendment1_url on top of the freeze."""
+    base = {**GOOD, "thresholds": THRESHOLDS}
+    for body in (GOOD, base, {**base, "amendment1_url": ""}, {**base, "amendment1_url": "  "}):
+        with pytest.raises(splits.GateError):
+            splits.check_gate("replication", write_frozen(tmp_path / "f.json", body))
+    with pytest.raises(splits.GateError):
+        splits.check_gate("replication", tmp_path / "absent.json")
+    ok = write_frozen(tmp_path / "ok.json", {**base, "amendment1_url": "https://osf.io/amend"})
+    splits.check_gate("replication", ok)
+    splits.check_gate("test", write_frozen(tmp_path / "t.json", base))
+
+
+def test_guard_blocks_replication_cases(tmp_path: Path) -> None:
+    """A case from the rep log is gated by its source even if labelled dev."""
+    full = {**GOOD, "thresholds": THRESHOLDS}
+    no_amendment = write_frozen(tmp_path / "a.json", full)
+    for split in ("dev", "replication"):
+        with pytest.raises(splits.GateError):
+            splits.guard_case({"source": "rep", "trial": 3, "split": split}, no_amendment)
+    with_amendment = write_frozen(tmp_path / "b.json", {**full, "amendment1_url": "https://x"})
+    splits.guard_case({"source": "rep", "trial": 3, "split": "replication"}, with_amendment)
+
+
+def test_replication_split_selects_only_the_rep_log() -> None:
+    """The replication split reads the rep log and nothing else; round 0 stays separate."""
+    from tests.test_data import make_log  # noqa: PLC0415
+
+    logs = {"main": make_log(3), "pilot": make_log(3), "rep": make_log(4)}
+    cases = splits.split_cases(logs, "replication")
+    assert {c["source"] for c in cases} == {"rep"}
+    assert {c["trial"] for c in cases} == {0, 1, 2, 3}
+    assert {c["round"] for c in cases} == {1, 2}
+    assert {c["split"] for c in cases} == {"replication"}
