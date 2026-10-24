@@ -8,6 +8,7 @@ after the OSF registration, then run scripts/fit_thresholds.py once the threshol
 
 import argparse
 import json
+import os
 import subprocess
 from datetime import datetime
 from pathlib import Path
@@ -53,6 +54,27 @@ def stamp(text: str, iso: str) -> str:
     raise FreezeError(msg)
 
 
+GIT_STRUCTURAL_VARS = (
+    "GIT_DIR",
+    "GIT_WORK_TREE",
+    "GIT_INDEX_FILE",
+    "GIT_OBJECT_DIRECTORY",
+    "GIT_COMMON_DIR",
+    "GIT_PREFIX",
+    "GIT_NAMESPACE",
+    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+)
+
+
+def clean_git_env() -> dict[str, str]:
+    """Return the environment without variables that redirect git to another repository.
+
+    Git hooks (and linked worktrees) export these; inheriting them would point git at the
+    wrong repository when this module is used from inside a hook or a test run by a hook.
+    """
+    return {k: v for k, v in os.environ.items() if k not in GIT_STRUCTURAL_VARS}
+
+
 def git(repo: Path, *args: str) -> str:
     """Run a git command in the repo and return its output."""
     done = subprocess.run(  # noqa: S603
@@ -60,6 +82,7 @@ def git(repo: Path, *args: str) -> str:
         check=True,
         capture_output=True,
         text=True,
+        env=clean_git_env(),
     )
     return done.stdout.strip()
 
