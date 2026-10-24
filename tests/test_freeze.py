@@ -16,8 +16,15 @@ PREREG = "**DRAFT, NOT FROZEN**\n\n# Pre-registration\nPENDING, not blocking the
 
 
 def run(cwd: Path, *args: str) -> str:
-    """Run a command and return stdout."""
-    done = subprocess.run(args, cwd=cwd, check=True, capture_output=True, text=True)  # noqa: S603
+    """Run a command and return stdout, ignoring git variables inherited from a hook."""
+    done = subprocess.run(  # noqa: S603
+        args,
+        cwd=cwd,
+        check=True,
+        capture_output=True,
+        text=True,
+        env=freeze.clean_git_env(),
+    )
     return done.stdout.strip()
 
 
@@ -138,3 +145,21 @@ def test_fit_thresholds_writes_all_views_and_opens_test_gate(tmp_path: Path) -> 
     assert all(v in out["thresholds"] for v in views.VIEWS)
     assert len(out["threshold_scores_sha256"]) == len(analysis.SCORERS)
     splits.check_gate("test", frozen)
+
+
+def test_freeze_ignores_inherited_git_environment(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    """GIT_DIR and friends (exported by hooks and worktrees) must not redirect git elsewhere.
+
+    A hook once pointed these at the real repository and the tests rewrote its config and files.
+    """
+    decoy = tmp_path / "decoy.git"
+    for name in freeze.GIT_STRUCTURAL_VARS:
+        monkeypatch.setenv(name, str(decoy))
+    repo, remote = make_repo(tmp_path / "work")
+    freeze.freeze(repo, NOW)
+    assert not decoy.exists()
+    assert run(remote, "git", "rev-parse", "main") == run(repo, "git", "rev-parse", "HEAD")
+    assert (repo / "configs" / "frozen.json").exists()
