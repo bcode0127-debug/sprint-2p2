@@ -1,0 +1,29 @@
+{
+  "note": "AUROC of each break type against all keeps; ties count 0.5",
+  "replication": {
+    "impulsive_deviation": {
+      "auroc": 0.719614616549103,
+      "n": 237,
+      "n_keep": 524
+    },
+    "premeditated_deception": {
+      "auroc": 0.5791160964358284,
+      "n": 139,
+      "n_keep": 524
+    }
+  },
+  "tag": "descriptive, no test",
+  "test": {
+    "impulsive_deviation": {
+      "auroc": 0.6957919386886177,
+      "n": 260,
+      "n_keep": 542
+    },
+    "premeditated_deception": {
+      "auroc": 0.546577302507719,
+      "n": 98,
+      "n_keep": 542
+    }
+  },
+  "view": "both"
+}

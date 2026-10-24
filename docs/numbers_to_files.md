@@ -18,6 +18,9 @@ command reads committed files only (a few also read caches in `~/apart-sprint/do
 | Replication: per-game means and C1, C2 (combination with the counting rule) | results/tables/replication/extras.json | `$PY -m scripts.analyze_replication` | no |
 | Replication: recalibration on trials 10 to 19 (frozen vs refit thresholds) | results/tables/replication/recalibration.json | `$PY -m scripts.recalibrate_replication` | no |
 | Fishing transfer (40 games): single test and descriptive tables | results/tables/fishing_test/tables.json and tables.md | `$PY -m scripts.analyze_fishing` | no |
+| AUROC of Both by harness break type (premeditated deception, impulsive deviation) against all keeps, test and replication; descriptive | results/tables/break_type_auroc.json | `$PY -m scripts.break_type_auroc` | no |
+| Report figures 1 to 3 (PNG and PDF) and the values plotted | results/figures/ (figure_data.json holds every plotted value) | `$PY -m scripts.make_figures` | no |
+| Report Tables 1 and 2 | results/report_tables.md | `$PY -m scripts.make_figures` | no |
 | Monitor scores behind the tables above | scores/threshold, scores/test, scores/replication, scores/fishing_test (one jsonl per view or rule) | `$PY -m scripts.score_views --split <split> --baselines` and `$PY -m scripts.score_fishing --split fishing_test` (already run once; do not rerun) | yes |
 | Thresholds and freeze record | configs/frozen.json | `$PY -m scripts.freeze` then `$PY -m scripts.fit_thresholds` (already run once) | no |
 | Raw agent logs and checksums | data/raw/ and data/raw/SHA256SUMS | `scripts/run_games.sh` (already run once; the guard refuses reruns) | yes |
