@@ -9,7 +9,7 @@ import json
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from sprint2p2 import baselines, monitor, scoring, splits, views
+from sprint2p2 import baselines, budget, monitor, scoring, splits, views
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "configs" / "monitor.json"
@@ -69,7 +69,11 @@ def main() -> None:
         write_baselines(logs, cases, args.rate_fit_split, out)
     names = [v for v in args.views.split(",") if v]
     if names:
-        runner = scoring.Runner(logs, cfg, monitor.make_post(read_key()))
+        key = read_key()
+        usage = budget.get_usage(key)
+        estimate = budget.check_budget(usage, len(cases) * len(names))
+        print(f"usage before: {usage:.4f} USD, estimated this run: {estimate:.2f} USD")  # noqa: T201
+        runner = scoring.Runner(logs, cfg, monitor.make_post(key))
         for view in names:
             with ThreadPoolExecutor(max_workers=workers) as pool:
                 rows = list(pool.map(lambda c, v=view: scoring.score_case(c, v, runner), cases))
