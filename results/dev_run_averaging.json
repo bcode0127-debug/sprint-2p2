@@ -1,0 +1,38 @@
+{
+  "tag": "DEV-ONLY",
+  "n_cases": 585,
+  "n_games": 13,
+  "auroc": {
+    "run1": 0.6066535262727754,
+    "run2": 0.6246935243497909,
+    "average": 0.6221936445363204
+  },
+  "distinct_values": {
+    "run1": 44,
+    "run2": 40,
+    "average": 112
+  },
+  "average_minus_run1": {
+    "diff": 0.015540118263545066,
+    "lower_95_one_sided": 0.0019428316248704452,
+    "p_one_sided": 0.031196880311968805,
+    "descriptive_two_sided_ci95": [
+      -0.0008961203844532107,
+      0.03155557626508816
+    ],
+    "n_resamples": 10000,
+    "n_games": 13
+  },
+  "average_minus_run2": {
+    "diff": -0.0024998798134704403,
+    "lower_95_one_sided": -0.015043935987328727,
+    "p_one_sided": 0.6214378562143785,
+    "descriptive_two_sided_ci95": [
+      -0.017252106343811885,
+      0.012496937849861799
+    ],
+    "n_resamples": 10000,
+    "n_games": 13
+  },
+  "spearman_run1_run2": 0.8598993952420804
+}
