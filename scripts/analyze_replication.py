@@ -8,14 +8,37 @@ test split it reproduces results/tables/final exactly (a test checks this).
 """
 
 import argparse
+import json
 from pathlib import Path
+
+import numpy as np
 
 from scripts import analyze as base
 from scripts._scores import SCORES, load_dir
-from sprint2p2 import analysis, splits
+from sprint2p2 import analysis, combine, pergame, splits
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUT = ROOT / "results" / "tables" / "replication"
+
+
+def extras(tst: dict, tables: dict) -> dict:
+    """Descriptive extras kept out of tables.json: per-game means and the combination (C1, C2)."""
+    ids = sorted(tst["both"])
+    both, _ = analysis.arrays(tst["both"], ids)
+    actions, _ = analysis.arrays(tst["actions_only"], ids)
+    counting, _ = analysis.arrays(tst["counting"], ids)
+    labels, games = analysis.labels_games(tst["both"], ids)
+    primary = pergame.per_game_auroc_difference(both, actions, labels, games)
+    combo = combine.combo_bootstrap(both, counting, np.asarray(labels), games)
+    return {
+        "note": "descriptive; the mean of per-game AUROC differences sits next to each pooled one",
+        "primary": {
+            "pooled_difference": tables["primary"]["diff"],
+            "mean_of_per_game_differences": primary["mean_of_per_game_differences"],
+            "per_game_differences": primary["per_game"],
+        },
+        "combination": combo,
+    }
 
 
 def run(split: str, out: Path) -> Path:
@@ -29,6 +52,9 @@ def run(split: str, out: Path) -> Path:
     out.mkdir(parents=True, exist_ok=True)
     (out / "tables.json").write_text(analysis.canonical(tables) + "\n")
     (out / "tables.md").write_text(base.render(tables))
+    (out / "extras.json").write_text(
+        json.dumps(extras(tst, tables), indent=2, sort_keys=True) + "\n"
+    )
     return out
 
 

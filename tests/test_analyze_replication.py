@@ -1,5 +1,6 @@
 """Tests for scripts/analyze_replication.py."""
 
+import json
 from pathlib import Path
 
 import pytest
@@ -16,6 +17,15 @@ def test_pointed_at_test_split_is_byte_identical(tmp_path: Path) -> None:
     analyze_replication.run("test", tmp_path)
     assert (tmp_path / "tables.json").read_bytes() == (FINAL / "tables.json").read_bytes()
     assert (tmp_path / "tables.md").read_bytes() == (FINAL / "tables.md").read_bytes()
+    extra = json.loads((tmp_path / "extras.json").read_text())
+    assert (
+        "mean_of_per_game_differences"
+        not in (tmp_path / "tables.json").read_text().split("power")[0]
+    )
+    assert round(extra["primary"]["pooled_difference"], 3) == 0.147  # noqa: PLR2004
+    assert round(extra["primary"]["mean_of_per_game_differences"], 3) == 0.117  # noqa: PLR2004
+    assert round(extra["combination"]["C1"]["diff"], 3) == 0.043  # noqa: PLR2004
+    assert round(extra["combination"]["C2"]["mean_of_per_game_differences"], 3) == -0.003  # noqa: PLR2004
 
 
 def test_replication_split_is_refused_without_amendment_url(tmp_path: Path) -> None:
