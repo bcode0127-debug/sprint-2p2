@@ -21,5 +21,98 @@
     "src/sprint2p2/metrics.py": "c8b845c061b166ed64503f0042ed40a239ce550734feb910c8218503794acf08",
     "src/sprint2p2/views.py": "6607cd0f4bb4935325914b7b6e14b98462ca83cd0c3a26bb8b0c21c03934e3f5"
   },
-  "thresholds": {}
+  "threshold_scores_sha256": {
+    "actions_only": "de33286a16b636b9a8ae1d31f43991af7eeb943fca26e95826b3400f371bf44c",
+    "both": "28a5dfd9baf333716dc48371ff09472cf68de2971666dd6de172f59d498b8fd3",
+    "broke_last": "976327a36c14b053562ad8cc736a7c548dc71fb2615862ae128c768501000950",
+    "counting": "0549e39d6ab2f3bfd8715d2a3e40d0767d034d6c7fad2df58f927d43ccd66155",
+    "empty": "657bbfac6ea725ff6097f88d8b55b9fc7c7d0d53f447ea50839360896410ed97",
+    "freshness": "b418b3ada17c3bca96a4dc5360f7535563cef600bb5e294c3fbf608e54493293",
+    "last_crowded": "3226b7803bd608cb47ca7bdc236e496aa66e82a4af5c3726d13180049b4ee95a",
+    "messages_only": "33ac0f4f810b1dec5ad405d79b21df3b5ad2e5d1ea0542b07096987a1f46b62f",
+    "oracle": "6e1abda9ed7d0337f745957484ee0e6f4fde768f304f0b4efda04619e1be3beb",
+    "own_only": "8fe103fbfd4c4b6e9c9f97ebc0387aafb25ad48ee897222e999a1f1ba1e184e5",
+    "plan": "f0312cc4a0d84d5deeda2a4d71fe7bbf6afbf5b23272bc0c285e1e5d7c2d6d5b",
+    "random": "bf8a23d5e714b4c7f34500a310058eadf0644f5b585461ec333ad55fc31c85e2",
+    "round_only": "f5b8150606f85407871148851d2fc79582dc8fb43e07b84d1e6577151506deb0",
+    "round_rate": "92d5f972226e350b4b3a8f8d61735ba83d9668fdb865910b3722af9f82133b38",
+    "structured": "5dee339c07ffb1949b0112ac8eff68c4dbd05447436c6fc6c9df58f3343afd34"
+  },
+  "thresholds": {
+    "actions_only": {
+      "fpr_target": 0.1,
+      "q": 0.08800000000000002,
+      "t": 15.0
+    },
+    "both": {
+      "fpr_target": 0.1,
+      "q": 0.4500000000000002,
+      "t": 60.0
+    },
+    "broke_last": {
+      "fpr_target": 0.1,
+      "q": 0.2169491525423729,
+      "t": 1.0
+    },
+    "counting": {
+      "fpr_target": 0.1,
+      "q": 0.33246753246753247,
+      "t": 4.0
+    },
+    "empty": {
+      "fpr_target": 0.1,
+      "q": 0.8,
+      "t": 15.0
+    },
+    "freshness": {
+      "fpr_target": 0.1,
+      "q": 0.9555555555555557,
+      "t": 62.0
+    },
+    "last_crowded": {
+      "fpr_target": 0.1,
+      "q": 0.30843373493975906,
+      "t": 1.0
+    },
+    "messages_only": {
+      "fpr_target": 0.1,
+      "q": 0.3200000000000003,
+      "t": 40.0
+    },
+    "oracle": {
+      "fpr_target": 0.1,
+      "q": 0.3000000000000001,
+      "t": 4.0
+    },
+    "own_only": {
+      "fpr_target": 0.1,
+      "q": 0.04285714285714296,
+      "t": 55.0
+    },
+    "plan": {
+      "fpr_target": 0.1,
+      "q": 0.011158798283261809,
+      "t": 0.0
+    },
+    "random": {
+      "fpr_target": 0.1,
+      "q": 0.6000000000000014,
+      "t": 0.8915771465744287
+    },
+    "round_only": {
+      "fpr_target": 0.1,
+      "q": 0.24854368932038837,
+      "t": 15.0
+    },
+    "round_rate": {
+      "fpr_target": 0.1,
+      "q": 0.10833333333333339,
+      "t": 0.52
+    },
+    "structured": {
+      "fpr_target": 0.1,
+      "q": 0.21666666666666679,
+      "t": 60.0
+    }
+  }
 }
