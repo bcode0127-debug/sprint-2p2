@@ -1,0 +1,27 @@
+{
+  "status": "pending lock (v2 setting)",
+  "model": "google/gemini-3.8-flash",
+  "prompt": "prompts/monitor_prompt_v1.txt",
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "reasoning": {
+    "max_tokens": 1024
+  },
+  "max_tokens": 1500,
+  "temperature": null,
+  "concurrency": 32,
+  "retry": {
+    "attempts": 5,
+    "base_delay_s": 1.0,
+    "retry_on": [
+      429,
+      500,
+      502,
+      503,
+      504
+    ]
+  },
+  "rate_limit_note": "GET /api/v1/key on 2026-10-23: rate_limit.requests = -1 (deprecated, no request cap); the binding limit is the key's $10 spend cap. Concurrency was 8 in earlier runs (no 429s) and is 32 from the full development run, with backoff on 429 and 5xx."
+}
